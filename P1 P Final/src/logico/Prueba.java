@@ -2,7 +2,7 @@ package logico;
 
 public class Prueba {
 
-	int klk = 0;
+	int prueba = 0;
 	
 	public Prueba() {
 		// TODO Auto-generated constructor stub
