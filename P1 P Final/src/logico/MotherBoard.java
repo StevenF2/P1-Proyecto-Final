@@ -9,6 +9,7 @@ public class MotherBoard extends Componentes {
 	private String tipoSocket;
 	private String tipoRam;
 	private ArrayList<String>conexionesDiscoDuro;
+	private int borraestoluego;
 	
 	public MotherBoard(float precio, int cantDisponible, int numSerie, String marca, String modelo, String tipoSocket,
 			String tipoRam, ArrayList<String> conexionesDiscoDuro) {

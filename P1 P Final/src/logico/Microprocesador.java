@@ -7,6 +7,7 @@ public class Microprocesador extends Componentes {
 	private String tipoDeSocket;
 	private int potencia;
 	private boolean tipoPotencia;
+	private int borraestoluego;
 	
 	public Microprocesador(float precio, int cantDisponible, int numSerie, String marca, String modelo,
 			String tipoDeSocket, int potencia, boolean tipoPotencia) {
