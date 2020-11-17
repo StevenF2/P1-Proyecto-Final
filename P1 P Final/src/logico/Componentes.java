@@ -2,9 +2,9 @@ package logico;
 
 public abstract class Componentes {
 	
-	float precio;
-	int cantDisponible;
-	int numSerie;
+	protected float precio;
+	protected int cantDisponible;
+	protected int numSerie;
 	
 	public Componentes(float precio, int cantDisponible, int numSerie) {
 		super();
