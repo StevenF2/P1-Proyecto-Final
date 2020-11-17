@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class MotherBoard extends Componentes {
 	
-	protected String marca;
-	protected String modelo;
-	protected String tipoSocket;
-	protected String tipoRam;
-	protected ArrayList<String>conexionesDiscoDuro;
+	private String marca;
+	private String modelo;
+	private String tipoSocket;
+	private String tipoRam;
+	private ArrayList<String>conexionesDiscoDuro;
 	
 	public MotherBoard(float precio, int cantDisponible, int numSerie, String marca, String modelo, String tipoSocket,
 			String tipoRam, ArrayList<String> conexionesDiscoDuro) {

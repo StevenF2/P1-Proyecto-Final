@@ -2,11 +2,11 @@ package logico;
 
 public class Microprocesador extends Componentes {
 	
-	protected String marca;
-	protected String modelo;
-	protected String tipoDeSocket;
-	protected int potencia;
-	protected boolean tipoPotencia;
+	private String marca;
+	private String modelo;
+	private String tipoDeSocket;
+	private int potencia;
+	private boolean tipoPotencia;
 	
 	public Microprocesador(float precio, int cantDisponible, int numSerie, String marca, String modelo,
 			String tipoDeSocket, int potencia, boolean tipoPotencia) {
