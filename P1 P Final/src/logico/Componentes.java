@@ -5,7 +5,6 @@ public abstract class Componentes {
 	protected float precio;
 	protected int cantDisponible;
 	protected int numSerie;
-	protected int x;
 	
 	public Componentes(float precio, int cantDisponible, int numSerie) {
 		super();
