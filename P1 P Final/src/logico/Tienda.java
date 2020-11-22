@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Tienda {
 	
+	
+	int x = 0;
 	private ArrayList <Componente> componentes;
 	private ArrayList <Cliente> clientes;
 	private ArrayList <Empleado> empleados;
