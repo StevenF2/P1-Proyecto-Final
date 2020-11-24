@@ -15,5 +15,6 @@ public class Administrador extends Empleado {
 		// TODO Auto-generated method stub
 		return sueldoBase;
 	}
+	
 
 }

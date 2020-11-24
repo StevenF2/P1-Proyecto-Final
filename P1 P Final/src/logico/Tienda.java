@@ -139,8 +139,41 @@ public class Tienda {
 		
 		
 	}
+
+//Obtener nombre de un empleado
+	public String getEmpleado(String cedula) {
+		String aux = " ";
+		boolean encontrado = false;
+		int i = 0;
+		
+		
+		while(!encontrado && i < empleados.size() ) {
+			if(empleados.get(i).getCedula().equalsIgnoreCase(cedula)) {
+				aux = empleados.get(i).getNombre();
+				encontrado = true;
+			}
+			i++;
+		}
+		return aux;		
+	}
 	
-	
+//Obtener nombre de un cliente
+		public String getCliente(String cedula) {
+			String aux = " ";
+			boolean encontrado = false;
+			int i = 0;
+			
+			
+			while(!encontrado && i < clientes.size() ) {
+				if(clientes.get(i).getCedula().equalsIgnoreCase(cedula)) {
+					aux = clientes.get(i).getNombre();
+					encontrado = true;
+				}
+				i++;
+			}
+			return aux;		
+		}
+
 	
 	
 
