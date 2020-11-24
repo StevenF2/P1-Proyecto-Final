@@ -13,13 +13,13 @@ public class Tienda {
 	private ArrayList <OrdenDeCompra> ordenes;
 	private ArrayList <Proveedor> proveedores;
 	private ArrayList <Combo> combos;
-	private static int idComponente;
-	private static int numOrdenes;
-	private static int numProveedores;
-	private static int numFacturas;
-	private static int numCombos;
-	private static int numClientes;
-	private static int numEmpleados;
+	private static int idComponentes;
+	private static int idOrdenes;
+	private static int idProveedores;
+	private static int idFacturas;
+	private static int idCombos;
+	private static int idClientes;
+	private static int idEmpleados;
 	private static Tienda tienda = null;
 	
 	private Tienda() {		
@@ -99,6 +99,41 @@ public class Tienda {
 		this.combos = combos;
 	}
 
+	public void IngresarComponente(Componente componente) {
+		componentes.add(componente);
+		idComponentes++;
+	}
+	
+	public void IngresarCliente(Cliente cliente) {
+		clientes.add(cliente);
+		idClientes++;
+	}
+	
+	public void IngresarEmpleado(Empleado empleado) {
+		empleados.add(empleado);
+		idEmpleados++;
+	}
+	
+	public void IngresarCombo(Combo combo) {
+		combos.add(combo);
+		idCombos++;
+	}
+	
+	public void IngresarFactura(Factura factura) {
+		facturas.add(factura);
+		idFacturas++;
+	}
+	
+	public void IngresarOrdenDeCompra(OrdenDeCompra orden) {
+		ordenes.add(orden);
+		idOrdenes++;
+	}
+	
+	public void IngresarProveedor(Proveedor proveedor) {
+		proveedores.add(proveedor);
+		idProveedores++;
+	}
+	
 	
 	private void realizarOrden() {
 		
