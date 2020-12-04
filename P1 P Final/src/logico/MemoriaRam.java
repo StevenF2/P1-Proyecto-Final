@@ -3,11 +3,11 @@ package logico;
 public abstract class MemoriaRam extends Componente {
 	
 	protected String marca;
-	protected int cantiMemoria;
+	protected float cantiMemoria;
 	protected boolean MbGb;
 		
 
-	public MemoriaRam(float precioCompra, float precioVenta, int cantDisponible, int numSerie, String marca, int cantiMemoria, boolean MbGb) {
+	public MemoriaRam(float precioCompra, float precioVenta, int cantDisponible, int numSerie, String marca, float cantiMemoria, boolean MbGb) {
 		super(precioCompra, precioVenta, cantDisponible, numSerie);
 		// TODO Auto-generated constructor stub
 		
@@ -22,10 +22,10 @@ public abstract class MemoriaRam extends Componente {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-	public int getCantiMemoria() {
+	public float getCantiMemoria() {
 		return cantiMemoria;
 	}
-	public void setCantiMemoria(int cantiMemoria) {
+	public void setCantiMemoria(float cantiMemoria) {
 		this.cantiMemoria = cantiMemoria;
 	}
 	public boolean isMbGb() {

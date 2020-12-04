@@ -13,13 +13,13 @@ public class Tienda {
 	private ArrayList <OrdenDeCompra> ordenes;
 	private ArrayList <Proveedor> proveedores;
 	private ArrayList <Combo> combos;
-	private static int idComponentes;
-	private static int idOrdenes;
-	private static int idProveedores;
-	private static int idFacturas;
-	private static int idCombos;
-	private static int idClientes;
-	private static int idEmpleados;
+	private  int idComponentes = 1;
+	private  int idOrdenes = 1;
+	private  int idProveedores = 1;
+	private  int idFacturas = 1;
+	private  int idCombos = 1;
+	private  int idClientes = 1;
+	private  int idEmpleados = 1;
 	private static Tienda tienda = null;
 	
 	private Tienda() {		
@@ -97,6 +97,70 @@ public class Tienda {
 
 	public void setCombos(ArrayList<Combo> combos) {
 		this.combos = combos;
+	}
+
+	public static Tienda getTienda() {
+		return tienda;
+	}
+
+	public static void setTienda(Tienda tienda) {
+		Tienda.tienda = tienda;
+	}
+
+	public int getIdComponentes() {
+		return idComponentes;
+	}
+
+	public void setIdComponentes(int idComponentes) {
+		this.idComponentes = idComponentes;
+	}
+
+	public int getIdOrdenes() {
+		return idOrdenes;
+	}
+
+	public void setIdOrdenes(int idOrdenes) {
+		this.idOrdenes = idOrdenes;
+	}
+
+	public int getIdProveedores() {
+		return idProveedores;
+	}
+
+	public void setIdProveedores(int idProveedores) {
+		this.idProveedores = idProveedores;
+	}
+
+	public int getIdFacturas() {
+		return idFacturas;
+	}
+
+	public void setIdFacturas(int idFacturas) {
+		this.idFacturas = idFacturas;
+	}
+
+	public int getIdCombos() {
+		return idCombos;
+	}
+
+	public void setIdCombos(int idCombos) {
+		this.idCombos = idCombos;
+	}
+
+	public int getIdClientes() {
+		return idClientes;
+	}
+
+	public void setIdClientes(int idClientes) {
+		this.idClientes = idClientes;
+	}
+
+	public int getIdEmpleados() {
+		return idEmpleados;
+	}
+
+	public void setIdEmpleados(int idEmpleados) {
+		this.idEmpleados = idEmpleados;
 	}
 
 	public void IngresarComponente(Componente componente) {

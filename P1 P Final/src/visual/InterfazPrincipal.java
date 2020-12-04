@@ -1,6 +1,7 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,9 +11,12 @@ import javax.swing.BoxLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InterfazPrincipal extends JFrame {
 
+	private Dimension dim;
 	private JPanel contentPane;
 
 	/**
@@ -38,6 +42,11 @@ public class InterfazPrincipal extends JFrame {
 		setTitle("Management Software");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 601, 429);
+		setResizable(false);
+		dim = getToolkit().getScreenSize();
+		super.setSize(dim.width, dim.height-45);
+		setLocationRelativeTo(null);
+		
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -79,9 +88,24 @@ public class InterfazPrincipal extends JFrame {
 		menuBar.add(mnNewMenu_3);
 		
 		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Nuevo Proveedor");
+		mntmNewMenuItem_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				NuevoProveedor p = new NuevoProveedor();
+				p.setVisible(true);
+				p.setLocationRelativeTo(null);
+				
+			}
+		});
 		mnNewMenu_3.add(mntmNewMenuItem_6);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Ver Proveedores Activos");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VerProveedores v = new VerProveedores();
+				v.setVisible(true);
+				v.setLocationRelativeTo(null);
+			}
+		});
 		mnNewMenu_3.add(mntmNewMenuItem_3);
 		
 		JMenu mnNewMenu_4 = new JMenu("Ordenes de Compra");

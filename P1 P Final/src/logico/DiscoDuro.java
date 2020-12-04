@@ -4,11 +4,11 @@ public abstract class DiscoDuro extends Componente {
 	
 	protected String marca;
 	protected String modelo;
-	protected int almacenamiento;
+	protected float almacenamiento;
 	protected Boolean GbTb;
 	
 
-	public DiscoDuro(float precioCompra, float precioVenta, int cantDisponible, int numSerie, String marca, String modelo, int almacenamiento, Boolean GbTb) {
+	public DiscoDuro(float precioCompra, float precioVenta, int cantDisponible, int numSerie, String marca, String modelo, float almacenamiento, Boolean GbTb) {
 		super(precioCompra, precioVenta, cantDisponible, numSerie);
 		// TODO Auto-generated constructor stub
 		
@@ -39,12 +39,12 @@ public abstract class DiscoDuro extends Componente {
 	}
 
 
-	public int getAlmacenamiento() {
+	public float getAlmacenamiento() {
 		return almacenamiento;
 	}
 
 
-	public void setAlmacenamiento(int almacenamiento) {
+	public void setAlmacenamiento(float almacenamiento) {
 		this.almacenamiento = almacenamiento;
 	}
 
