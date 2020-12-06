@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import logico.Control;
-import logico.Usuarios;
+import logico.Empleado;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -31,6 +31,7 @@ public class Login extends JFrame {
 	private JTextField textCedula;
 	private JTextField textUsuario2;
 	private JPasswordField passwordField;
+	private InterfazPrincipal InterfazPrincipal;
 
 	/**
 	 * Launch the application.
@@ -54,8 +55,8 @@ public class Login extends JFrame {
 					try {
 						empresa2 = new  FileOutputStream("empresa.dat");
 						empresaWrite = new ObjectOutputStream(empresa2);
-						Usuarios aux = new Usuarios("Admin", "Admin");
-						Control.getInstance().regUser(aux);
+						
+					
 						empresaWrite.writeObject(Control.getInstance());
 						empresa2.close();
 						empresaWrite.close();
@@ -107,30 +108,6 @@ public class Login extends JFrame {
 		btnInicio.setBounds(302, 217, 112, 23);
 		panel.add(btnInicio);
 		
-		textNombre = new JTextField();
-		textNombre.setBounds(44, 148, 248, 20);
-		panel.add(textNombre);
-		textNombre.setColumns(10);
-		textNombre.setVisible(false);
-		
-		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setFont(new Font("Arial", Font.PLAIN, 12));
-		lblNombre.setBounds(44, 123, 86, 14);
-		panel.add(lblNombre);
-		lblNombre.setVisible(false);
-		
-		JLabel lblCedula = new JLabel("C\u00E9dula");
-		lblCedula.setFont(new Font("Arial", Font.PLAIN, 12));
-		lblCedula.setBounds(44, 179, 86, 14);
-		panel.add(lblCedula);
-		lblCedula.setVisible(false);
-		
-		textCedula = new JTextField();
-		textCedula.setBounds(44, 204, 248, 20);
-		panel.add(textCedula);
-		textCedula.setColumns(10);
-		textCedula.setVisible(false);
-		
 		JLabel lblUsuario2 = new JLabel("Usuario");
 		lblUsuario2.setFont(new Font("Arial", Font.PLAIN, 12));
 		lblUsuario2.setBounds(44, 11, 86, 14);
@@ -149,7 +126,7 @@ public class Login extends JFrame {
 		panel.add(lblContraseña);
 		lblContraseña.setVisible(false);
 		
-		JButton btnFinalizar = new JButton("Finalizar");
+		JButton btnFinalizar = new JButton("Iniciar");
 		btnFinalizar.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnFinalizar.setBounds(325, 217, 89, 23);
 		panel.add(btnFinalizar);
@@ -163,23 +140,15 @@ public class Login extends JFrame {
 		
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnInicio.setVisible(false);
-				btnRegistro.setVisible(false);
-				textNombre.setVisible(true);
-				lblNombre.setVisible(true);
-				lblCedula.setVisible(true);
-				textCedula.setVisible(true);
-				lblUsuario2.setVisible(true);
-				textUsuario2.setVisible(true);
-				lblContraseña.setVisible(true);
-				passwordField.setVisible(true);
-				btnFinalizar.setVisible(true);
+				
 				
 			}
 		});
 		
 		btnInicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				InterfazPrincipal = new InterfazPrincipal();
+				dispose();
 				btnInicio.setVisible(false);
 				btnRegistro.setVisible(false);
 				lblUsuario2.setVisible(true);
@@ -187,6 +156,15 @@ public class Login extends JFrame {
 				lblContraseña.setVisible(true);
 				passwordField.setVisible(true);
 				btnFinalizar.setVisible(true);
+				btnFinalizar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if(Control.getInstance().confirmLogin(textUsuario2.getText(),passwordField.getText()) || textUsuario2.getText() == "Admin") {
+							InterfazPrincipal = new InterfazPrincipal();
+							dispose();
+							
+						}
+					}
+				});
 			}
 		});
 	}

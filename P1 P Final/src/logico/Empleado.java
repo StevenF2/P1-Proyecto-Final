@@ -22,6 +22,18 @@ public abstract class Empleado {
 		this.usuario = usuario;
 		this.contrasena = contrasena;
 	}
+	
+	public Empleado(String usuario, String contrasena) {
+		super();
+		this.nombre = null;
+		this.cedula = null;
+		this.sueldoBase = 0;
+		this.numVentas = 0;
+		this.facturas = null;
+		this.usuario = usuario;
+		this.contrasena = contrasena;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
