@@ -123,12 +123,12 @@ public class NuevoProveedor extends JDialog {
 		contentPanel.add(lblNewLabel_1);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(63, 8, 121, 20);
+		txtNombre.setBounds(78, 9, 121, 20);
 		contentPanel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtRNC = new JTextField();
-		txtRNC.setBounds(63, 36, 121, 20);
+		txtRNC.setBounds(78, 34, 121, 20);
 		contentPanel.add(txtRNC);
 		txtRNC.setColumns(10);
 		
@@ -237,29 +237,29 @@ public class NuevoProveedor extends JDialog {
 		panel_DiscoDuro.setLayout(null);
 		
 		JLabel lblNewLabel_16 = new JLabel("Marca:");
-		lblNewLabel_16.setBounds(10, 11, 46, 14);
+		lblNewLabel_16.setBounds(10, 11, 126, 14);
 		panel_DiscoDuro.add(lblNewLabel_16);
 		
 		txtDDmarca = new JTextField();
-		txtDDmarca.setBounds(110, 8, 86, 20);
+		txtDDmarca.setBounds(137, 9, 86, 20);
 		panel_DiscoDuro.add(txtDDmarca);
 		txtDDmarca.setColumns(10);
 		
 		JLabel lblNewLabel_17 = new JLabel("Modelo:");
-		lblNewLabel_17.setBounds(10, 36, 46, 14);
+		lblNewLabel_17.setBounds(10, 36, 126, 14);
 		panel_DiscoDuro.add(lblNewLabel_17);
 		
 		txtDDmodelo = new JTextField();
-		txtDDmodelo.setBounds(110, 33, 86, 20);
+		txtDDmodelo.setBounds(137, 34, 86, 20);
 		panel_DiscoDuro.add(txtDDmodelo);
 		txtDDmodelo.setColumns(10);
 		
 		JLabel lblNewLabel_18 = new JLabel("Almacenamiento:");
-		lblNewLabel_18.setBounds(10, 61, 100, 14);
+		lblNewLabel_18.setBounds(10, 61, 126, 14);
 		panel_DiscoDuro.add(lblNewLabel_18);
 		
 		txtDDalmacenamiento = new JTextField();
-		txtDDalmacenamiento.setBounds(110, 58, 86, 20);
+		txtDDalmacenamiento.setBounds(137, 59, 86, 20);
 		panel_DiscoDuro.add(txtDDalmacenamiento);
 		txtDDalmacenamiento.setColumns(10);
 		
@@ -292,11 +292,11 @@ public class NuevoProveedor extends JDialog {
 		panel_DiscoDuro.add(rdbtnDDsata3);
 		
 		JLabel lblNewLabel_24 = new JLabel("Costo:");
-		lblNewLabel_24.setBounds(10, 210, 46, 14);
+		lblNewLabel_24.setBounds(10, 199, 46, 14);
 		panel_DiscoDuro.add(lblNewLabel_24);
 		
 		textField_18 = new JTextField();
-		textField_18.setBounds(50, 207, 86, 20);
+		textField_18.setBounds(101, 197, 86, 20);
 		panel_DiscoDuro.add(textField_18);
 		textField_18.setColumns(10);
 		
