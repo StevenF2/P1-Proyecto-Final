@@ -153,7 +153,7 @@ public class NuevoProveedor extends JDialog {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(283, 11, 237, 152);
+		panel_1.setBounds(283, 11, 241, 152);
 		contentPanel.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -176,7 +176,7 @@ public class NuevoProveedor extends JDialog {
 			}
 		});
 		rdbtnMotherBoard.setSelected(true);
-		rdbtnMotherBoard.setBounds(6, 32, 109, 23);
+		rdbtnMotherBoard.setBounds(6, 32, 200, 23);
 		panel_1.add(rdbtnMotherBoard);
 		
 		
@@ -210,7 +210,7 @@ public class NuevoProveedor extends JDialog {
 				panel_DiscoDuro.setVisible(false);
 			}
 		});
-		rdbtnMemoriaRam.setBounds(6, 84, 109, 23);
+		rdbtnMemoriaRam.setBounds(6, 84, 162, 23);
 		panel_1.add(rdbtnMemoriaRam);
 		
 		
@@ -232,7 +232,7 @@ public class NuevoProveedor extends JDialog {
 		
 		
 		panel_DiscoDuro.setVisible(false);
-		panel_DiscoDuro.setBounds(285, 174, 235, 229);
+		panel_DiscoDuro.setBounds(285, 174, 239, 229);
 		contentPanel.add(panel_DiscoDuro);
 		panel_DiscoDuro.setLayout(null);
 		
@@ -241,7 +241,7 @@ public class NuevoProveedor extends JDialog {
 		panel_DiscoDuro.add(lblNewLabel_16);
 		
 		txtDDmarca = new JTextField();
-		txtDDmarca.setBounds(137, 9, 86, 20);
+		txtDDmarca.setBounds(141, 9, 86, 20);
 		panel_DiscoDuro.add(txtDDmarca);
 		txtDDmarca.setColumns(10);
 		
@@ -250,16 +250,16 @@ public class NuevoProveedor extends JDialog {
 		panel_DiscoDuro.add(lblNewLabel_17);
 		
 		txtDDmodelo = new JTextField();
-		txtDDmodelo.setBounds(137, 34, 86, 20);
+		txtDDmodelo.setBounds(141, 34, 86, 20);
 		panel_DiscoDuro.add(txtDDmodelo);
 		txtDDmodelo.setColumns(10);
 		
 		JLabel lblNewLabel_18 = new JLabel("Almacenamiento:");
-		lblNewLabel_18.setBounds(10, 61, 126, 14);
+		lblNewLabel_18.setBounds(10, 61, 155, 14);
 		panel_DiscoDuro.add(lblNewLabel_18);
 		
 		txtDDalmacenamiento = new JTextField();
-		txtDDalmacenamiento.setBounds(137, 59, 86, 20);
+		txtDDalmacenamiento.setBounds(141, 59, 86, 20);
 		panel_DiscoDuro.add(txtDDalmacenamiento);
 		txtDDalmacenamiento.setColumns(10);
 		
@@ -272,7 +272,7 @@ public class NuevoProveedor extends JDialog {
 		panel_DiscoDuro.add(rdbtnDDtb);
 		
 		JLabel lblNewLabel_19 = new JLabel("Tipo de Conexion:");
-		lblNewLabel_19.setBounds(10, 110, 100, 14);
+		lblNewLabel_19.setBounds(10, 110, 176, 14);
 		panel_DiscoDuro.add(lblNewLabel_19);
 		
 		JRadioButton rdbtnDDide = new JRadioButton("IDE");
@@ -284,7 +284,7 @@ public class NuevoProveedor extends JDialog {
 		panel_DiscoDuro.add(rdbtnDDsata);
 		
 		JRadioButton rdbtnDDsata2 = new JRadioButton("SATA-2");
-		rdbtnDDsata2.setBounds(10, 145, 70, 23);
+		rdbtnDDsata2.setBounds(10, 145, 86, 23);
 		panel_DiscoDuro.add(rdbtnDDsata2);
 		
 		JRadioButton rdbtnDDsata3 = new JRadioButton("SATA-3");
@@ -296,7 +296,7 @@ public class NuevoProveedor extends JDialog {
 		panel_DiscoDuro.add(lblNewLabel_24);
 		
 		textField_18 = new JTextField();
-		textField_18.setBounds(101, 197, 86, 20);
+		textField_18.setBounds(141, 197, 86, 20);
 		panel_DiscoDuro.add(textField_18);
 		textField_18.setColumns(10);
 		
@@ -307,7 +307,7 @@ public class NuevoProveedor extends JDialog {
 		panel_MemoriaRam.setLayout(null);
 		
 		JLabel lblNewLabel_13 = new JLabel("Marca:");
-		lblNewLabel_13.setBounds(10, 11, 46, 14);
+		lblNewLabel_13.setBounds(10, 11, 80, 14);
 		panel_MemoriaRam.add(lblNewLabel_13);
 		
 		txtMRmarca = new JTextField();
@@ -341,7 +341,7 @@ public class NuevoProveedor extends JDialog {
 		panel_MemoriaRam.add(rdbtnMRddr);
 		
 		JRadioButton rdbtnMRddr2 = new JRadioButton("DDR-2");
-		rdbtnMRddr2.setBounds(100, 100, 109, 23);
+		rdbtnMRddr2.setBounds(100, 100, 115, 23);
 		panel_MemoriaRam.add(rdbtnMRddr2);
 		
 		JRadioButton rdbtnMRddr3 = new JRadioButton("DDR-3");
@@ -357,7 +357,7 @@ public class NuevoProveedor extends JDialog {
 		panel_MemoriaRam.add(lblNewLabel_23);
 		
 		txtMRcosto = new JTextField();
-		txtMRcosto.setBounds(50, 207, 86, 20);
+		txtMRcosto.setBounds(100, 207, 86, 20);
 		panel_MemoriaRam.add(txtMRcosto);
 		txtMRcosto.setColumns(10);
 		
@@ -376,7 +376,7 @@ public class NuevoProveedor extends JDialog {
 		panel_Microprocesador.add(lblNewLabel_10);
 		
 		JLabel lblNewLabel_11 = new JLabel("Tipo de Socket");
-		lblNewLabel_11.setBounds(10, 61, 93, 14);
+		lblNewLabel_11.setBounds(10, 61, 120, 14);
 		panel_Microprocesador.add(lblNewLabel_11);
 		
 		JLabel lblNewLabel_12 = new JLabel("Velocidad:");
@@ -388,27 +388,27 @@ public class NuevoProveedor extends JDialog {
 		panel_Microprocesador.add(lblNewLabel_22);
 		
 		txtMcosto = new JTextField();
-		txtMcosto.setBounds(50, 207, 86, 20);
+		txtMcosto.setBounds(135, 207, 86, 20);
 		panel_Microprocesador.add(txtMcosto);
 		txtMcosto.setColumns(10);
 		
 		txtMmarca = new JTextField();
-		txtMmarca.setBounds(100, 8, 86, 20);
+		txtMmarca.setBounds(135, 8, 86, 20);
 		panel_Microprocesador.add(txtMmarca);
 		txtMmarca.setColumns(10);
 		
 		txtMmodelo = new JTextField();
-		txtMmodelo.setBounds(100, 30, 86, 20);
+		txtMmodelo.setBounds(135, 30, 86, 20);
 		panel_Microprocesador.add(txtMmodelo);
 		txtMmodelo.setColumns(10);
 		
 		txtMtiposocket = new JTextField();
-		txtMtiposocket.setBounds(100, 55, 86, 20);
+		txtMtiposocket.setBounds(135, 55, 86, 20);
 		panel_Microprocesador.add(txtMtiposocket);
 		txtMtiposocket.setColumns(10);
 		
 		txtMvelocidad = new JTextField();
-		txtMvelocidad.setBounds(100, 80, 86, 20);
+		txtMvelocidad.setBounds(135, 80, 86, 20);
 		panel_Microprocesador.add(txtMvelocidad);
 		txtMvelocidad.setColumns(10);
 		
@@ -435,11 +435,11 @@ public class NuevoProveedor extends JDialog {
 		panel_MotherBoard.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("Tipo de Socket:");
-		lblNewLabel_6.setBounds(10, 61, 93, 14);
+		lblNewLabel_6.setBounds(10, 61, 110, 14);
 		panel_MotherBoard.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_7 = new JLabel("Compatible con Ram:");
-		lblNewLabel_7.setBounds(10, 86, 141, 14);
+		lblNewLabel_7.setBounds(10, 86, 160, 14);
 		panel_MotherBoard.add(lblNewLabel_7);
 		
 		JLabel lblNewLabel_21 = new JLabel("Costo:");
@@ -447,23 +447,23 @@ public class NuevoProveedor extends JDialog {
 		panel_MotherBoard.add(lblNewLabel_21);
 		
 		txtMBcosto = new JTextField();
-		txtMBcosto.setBounds(50, 207, 86, 20);
+		txtMBcosto.setBounds(135, 207, 86, 20);
 		panel_MotherBoard.add(txtMBcosto);
 		txtMBcosto.setColumns(10);
 		
 		txtMBmarca = new JTextField();
-		txtMBmarca.setBounds(100, 8, 86, 20);
+		txtMBmarca.setBounds(135, 8, 86, 20);
 		panel_MotherBoard.add(txtMBmarca);
 		txtMBmarca.setColumns(10);
 		
 		txtMBmodelo = new JTextField();
 		txtMBmodelo.setColumns(10);
-		txtMBmodelo.setBounds(100, 30, 86, 20);
+		txtMBmodelo.setBounds(135, 30, 86, 20);
 		panel_MotherBoard.add(txtMBmodelo);
 		
 		txtMBtiposocket = new JTextField();
 		txtMBtiposocket.setColumns(10);
-		txtMBtiposocket.setBounds(100, 55, 86, 20);
+		txtMBtiposocket.setBounds(135, 55, 86, 20);
 		panel_MotherBoard.add(txtMBtiposocket);
 		
 		

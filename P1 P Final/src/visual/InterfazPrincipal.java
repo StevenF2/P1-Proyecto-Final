@@ -82,6 +82,13 @@ public class InterfazPrincipal extends JFrame {
 		mnNewMenu_1.add(mntmNewMenuItem_7);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Realizar Venta");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				SistemadeVentas s = new SistemadeVentas();
+				s.setVisible(true);
+				s.setLocationRelativeTo(null);
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_2);
 		
 		JMenu mnNewMenu_3 = new JMenu("Proveedores");
