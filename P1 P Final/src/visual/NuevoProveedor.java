@@ -91,18 +91,10 @@ public class NuevoProveedor extends JDialog {
 		JPanel panel_Microprocesador = new JPanel();
 		panel_Microprocesador.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		JRadioButton rdbtnMBDDR = new JRadioButton("DDR");
-//		rdbtnMBDDR.setBounds(10, 80, 60, 23);
-//		panel_MotherBoard.add(rdbtnMBDDR);
 		JRadioButton rdbtnMBDDR2 = new JRadioButton("DDR-2");
-//		rdbtnMBDDR2.setBounds(50, 80, 60, 23);
-//		panel_MotherBoard.add(rdbtnMBDDR2);
 		JRadioButton rdbtnMBDDR3 = new JRadioButton("DDR-3");
-//		rdbtnMBDDR3.setBounds(10, 80, 60, 23);
-//		panel_MotherBoard.add(rdbtnMBDDR3);
 		JRadioButton rdbtnMBDDR4 = new JRadioButton("DDR-4");
-//		rdbtnMBDDR4.setBounds(50, 80, 60, 23);
-//		panel_MotherBoard.add(rdbtnMBDDR4);
-		
+
 		ArrayList <OrdenDeCompra> orden = new ArrayList<OrdenDeCompra>();
 		ArrayList <Componente> comp = new ArrayList<Componente>();	
 		comp.clear();
@@ -433,6 +425,9 @@ public class NuevoProveedor extends JDialog {
 		panel_MotherBoard.setBounds(285, 174, 235, 229);
 		contentPanel.add(panel_MotherBoard);
 		panel_MotherBoard.setLayout(null);
+		contentPanel.setLayout(null);
+		setLocationRelativeTo(null);
+
 		
 		JLabel lblNewLabel_4 = new JLabel("Marca:");
 		lblNewLabel_4.setBounds(10, 11, 57, 14);
@@ -486,8 +481,7 @@ public class NuevoProveedor extends JDialog {
 		});
 		rdbtnMBDDR.setBounds(10, 100, 60, 23);
 		panel_MotherBoard.add(rdbtnMBDDR);
-		
-		
+				
 		rdbtnMBDDR2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -497,7 +491,7 @@ public class NuevoProveedor extends JDialog {
 				rdbtnMBDDR4.setSelected(false);
 			}
 		});
-		rdbtnMBDDR2.setBounds(77, 100, 62, 23);
+		rdbtnMBDDR2.setBounds(85, 100, 70, 23);
 		panel_MotherBoard.add(rdbtnMBDDR2);
 		
 		
@@ -510,7 +504,7 @@ public class NuevoProveedor extends JDialog {
 				rdbtnMBDDR4.setSelected(false);
 			}
 		});
-		rdbtnMBDDR3.setBounds(10, 121, 62, 23);
+		rdbtnMBDDR3.setBounds(10, 121, 70, 23);
 		panel_MotherBoard.add(rdbtnMBDDR3);
 		
 		
@@ -523,11 +517,11 @@ public class NuevoProveedor extends JDialog {
 				rdbtnMBDDR4.setSelected(true);
 			}
 		});
-		rdbtnMBDDR4.setBounds(77, 121, 62, 23);
+		rdbtnMBDDR4.setBounds(85, 121, 70, 23);
 		panel_MotherBoard.add(rdbtnMBDDR4);
 		
 		JLabel lblNewLabel_8 = new JLabel("Conexiones de Disco Duro:");
-		lblNewLabel_8.setBounds(10, 141, 176, 14);
+		lblNewLabel_8.setBounds(10, 141, 190, 14);
 		panel_MotherBoard.add(lblNewLabel_8);
 		
 		JRadioButton rdbtnMBIDE = new JRadioButton("IDE");
@@ -535,15 +529,15 @@ public class NuevoProveedor extends JDialog {
 		panel_MotherBoard.add(rdbtnMBIDE);
 		
 		JRadioButton rdbtnMBSATA = new JRadioButton("SATA");
-		rdbtnMBSATA.setBounds(77, 155, 57, 23);
+		rdbtnMBSATA.setBounds(85, 155, 65, 23);
 		panel_MotherBoard.add(rdbtnMBSATA);
 		
 		JRadioButton rdbtnMBSATA2 = new JRadioButton("SATA-2");
-		rdbtnMBSATA2.setBounds(10, 174, 67, 23);
+		rdbtnMBSATA2.setBounds(10, 174, 75, 23);
 		panel_MotherBoard.add(rdbtnMBSATA2);
 		
 		JRadioButton rdbtnMBSATA3 = new JRadioButton("SATA-3");
-		rdbtnMBSATA3.setBounds(77, 174, 74, 23);
+		rdbtnMBSATA3.setBounds(85, 174, 74, 23);
 		panel_MotherBoard.add(rdbtnMBSATA3);
 		
 		JLabel lblNewLabel_20 = new JLabel("Costo Total:");
