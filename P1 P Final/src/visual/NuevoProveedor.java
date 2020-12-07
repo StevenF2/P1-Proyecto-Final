@@ -779,12 +779,16 @@ public class NuevoProveedor extends JDialog {
 							
 							String tipo = "";
 							String clase = "";
+							String marca = "";
+							String modelo = "";
+							
 							costoTotal += c.getPrecioCompra();
 							
 							if(c instanceof Microprocesador) {
 								
 								tipo = "Microprocesador";
 								clase = "";
+								
 							}
 							if(c instanceof Motherboard) {
 								
@@ -836,10 +840,10 @@ public class NuevoProveedor extends JDialog {
 								}
 							}
 							
-							float precio = Math.round((c.getPrecioCompra()*100)/100);
+							float costo = Math.round((c.getPrecioCompra()*100)/100);
 							
-							lista.addElement(tipo+"              "+clase+"          "+"50 Unidades"+"         "+precio+"$RD");
-							costoTotal += precio;
+							lista.addElement(tipo+"              "+clase+"          "+"Costo Unitario ="+costo+"$RD");
+							costoTotal += costo;
 							txtCostoTotal.setText(""+costoTotal);
 													
 						}

@@ -10,12 +10,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import logico.Componente;
 import logico.Proveedor;
 import logico.Tienda;
 
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class VerProveedores extends JDialog {
@@ -41,6 +43,8 @@ public class VerProveedores extends JDialog {
 	public VerProveedores() {
 		
 		DefaultListModel proveedores = new DefaultListModel();
+		ArrayList <Proveedor> pro = new ArrayList<Proveedor>();
+		pro.addAll(Tienda.getInstance().getProveedores());
 		
 		setTitle("Proveedores");
 		setBounds(100, 100, 450, 300);
@@ -85,9 +89,13 @@ public class VerProveedores extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
-		Proveedor p = Tienda.getInstance().getProveedores().get(0);
+	//	Proveedor p = Tienda.getInstance().getProveedores().get(0);
 		
-		proveedores.addElement(p.getNombre()+"      "+p.getRnc()+"         "+"Cuenta con "+p.getOrdenes().get(0).getCostoTotal()+"$RD de Costo Total ");
+		for(Proveedor p : pro) {
+			
+		proveedores.addElement(p.getNombre()+"      "+p.getRnc()+"         "+"Cuenta con "+p.getOrdenes().size()+" Ordenes de Compra");
+		
+		}
 		
 		
 	}

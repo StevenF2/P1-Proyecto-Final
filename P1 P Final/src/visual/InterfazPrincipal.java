@@ -7,6 +7,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logico.Tienda;
+
 import javax.swing.BoxLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -108,9 +111,18 @@ public class InterfazPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Ver Proveedores Activos");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				if(Tienda.getInstance().getProveedores().size() == 0) {
+					
+					
+					
+				}else {
+					
 				VerProveedores v = new VerProveedores();
 				v.setVisible(true);
 				v.setLocationRelativeTo(null);
+				
+				}
 			}
 		});
 		mnNewMenu_3.add(mntmNewMenuItem_3);
