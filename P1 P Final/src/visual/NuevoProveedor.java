@@ -91,9 +91,17 @@ public class NuevoProveedor extends JDialog {
 		JPanel panel_Microprocesador = new JPanel();
 		panel_Microprocesador.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		JRadioButton rdbtnMBDDR = new JRadioButton("DDR");
+//		rdbtnMBDDR.setBounds(10, 80, 60, 23);
+//		panel_MotherBoard.add(rdbtnMBDDR);
 		JRadioButton rdbtnMBDDR2 = new JRadioButton("DDR-2");
+//		rdbtnMBDDR2.setBounds(50, 80, 60, 23);
+//		panel_MotherBoard.add(rdbtnMBDDR2);
 		JRadioButton rdbtnMBDDR3 = new JRadioButton("DDR-3");
+//		rdbtnMBDDR3.setBounds(10, 80, 60, 23);
+//		panel_MotherBoard.add(rdbtnMBDDR3);
 		JRadioButton rdbtnMBDDR4 = new JRadioButton("DDR-4");
+//		rdbtnMBDDR4.setBounds(50, 80, 60, 23);
+//		panel_MotherBoard.add(rdbtnMBDDR4);
 		
 		ArrayList <OrdenDeCompra> orden = new ArrayList<OrdenDeCompra>();
 		ArrayList <Componente> comp = new ArrayList<Componente>();	
