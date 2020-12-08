@@ -642,6 +642,7 @@ public class NuevoProveedor extends JDialog {
 					
 					o = new OrdenDeCompra(comp, costo, p);
 					orden.set(0, o);
+				//	orden.remove(Tienda.getInstance().getIdOrdenes());
 				//	orden.set((Tienda.getInstance().getIdOrdenes())-1, o);
 					
 				//	p = new Proveedor(nombre, rnc, orden);

@@ -230,7 +230,7 @@ public class RealizarOrden extends JDialog {
 							float costoTotal = Math.round((costoOrden*100)/100);
 							cTotal = costoTotal;
 							
-							componentes.addElement("Costo ="+cTotal+"$RD");
+							//componentes.addElement("Costo ="+cTotal+"$RD");
 							
 						}
 						
@@ -266,7 +266,7 @@ public class RealizarOrden extends JDialog {
 							Tienda.getInstance().setGastos(Tienda.getInstance().getGastos()+costo);
 							
 							JOptionPane.showMessageDialog(null, "La orden se ha realizado exitosamente y tuvo un costo de "+costo+"$RD", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-							
+							txtUnidades.setText("");
 							componentes.clear();
 								
 						}	
@@ -292,19 +292,29 @@ public class RealizarOrden extends JDialog {
 		}
 		
 		
-		
+			ordenes.clear();
+			o.clear();
 			o.addAll(Tienda.getInstance().getOrdenes());
 			int j = o.size();
-			int k = 1;
+			int k = 0;
+		//	ordenes.clear();
 			
-			while(k < j) {
+			for(OrdenDeCompra orden : o) {
 				
 				ordenes.addElement(k);
 				k++;
-				//
-			} 
+				}
 			
-		
+			
+	/*		while(k < j) {
+				
+				ordenes.addElement(k);
+				k++;
+				ordenes.addElement(j);
+				//
+			} */
+			
+		//	ordenes.addElement("Tamano del array ordenes es:"+j);
 	/*	if(listaProveedores.getSelectedIndex() >= 0) {
 			int i = listaProveedores.getSelectedIndex();
 			
