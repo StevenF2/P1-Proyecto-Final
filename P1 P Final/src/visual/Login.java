@@ -157,7 +157,7 @@ public class Login extends JFrame {
 				btnFinalizar.setVisible(true);
 				btnFinalizar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(Control.getInstance().confirmLogin(textUsuario2.getText(),passwordField.getText()) || textUsuario2.getText() == "Admin") {
+						if(Control.getInstance().confirmLogin(textUsuario2.getText(),passwordField.getText()) || textUsuario2.getText().equals("Admin")) {
 							InterfazPrincipal = new InterfazPrincipal();
 							dispose();
 							InterfazPrincipal.setVisible(true);
