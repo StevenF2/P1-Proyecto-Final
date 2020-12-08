@@ -140,17 +140,16 @@ public class Login extends JFrame {
 		
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				Registro reg = new Registro();
+				dispose();
+				reg.setVisible(true);
 			}
 		});
 		
 		btnInicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InterfazPrincipal = new InterfazPrincipal();
-				dispose();
 				btnInicio.setVisible(false);
-				btnRegistro.setVisible(false);
+				btnRegistro.setVisible(false); 
 				lblUsuario2.setVisible(true);
 				textUsuario2.setVisible(true);
 				lblContraseña.setVisible(true);
@@ -161,7 +160,7 @@ public class Login extends JFrame {
 						if(Control.getInstance().confirmLogin(textUsuario2.getText(),passwordField.getText()) || textUsuario2.getText() == "Admin") {
 							InterfazPrincipal = new InterfazPrincipal();
 							dispose();
-							
+							InterfazPrincipal.setVisible(true);
 						}
 					}
 				});
