@@ -20,8 +20,8 @@ public class Tienda {
 	private  int idCombos = 1;
 	private  int idClientes = 1;
 	private  int idEmpleados = 1;
-	private int gastos = 0;
-	private int ganancias = 0;
+	private float gastos = 0;
+	private float ganancias = 0;
 	private static Tienda tienda = null;
 	
 	private Tienda() {		
@@ -165,15 +165,15 @@ public class Tienda {
 		this.idEmpleados = idEmpleados;
 	}
 
-	public int getGastos() {
+	public float getGastos() {
 		return gastos;
 	}
 
-	public void setGastos(int gastos) {
+	public void setGastos(float gastos) {
 		this.gastos = gastos;
 	}
 
-	public int getGanancias() {
+	public float getGanancias() {
 		return ganancias;
 	}
 

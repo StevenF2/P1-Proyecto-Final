@@ -14,6 +14,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -67,6 +69,16 @@ public class InterfazPrincipal extends JFrame {
 		menuBar.add(mnNewMenu_2);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Ver Inventario");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				VerInventario v = new VerInventario();
+				v.setVisible(true);
+				v.setLocationRelativeTo(null);
+				
+				
+			}
+		});
 		mnNewMenu_2.add(mntmNewMenuItem);
 		
 		JMenu mnNewMenu_5 = new JMenu("Combos");
@@ -114,7 +126,8 @@ public class InterfazPrincipal extends JFrame {
 				
 				if(Tienda.getInstance().getProveedores().size() == 0) {
 					
-					
+					JOptionPane.showMessageDialog(null, "No se han registrado proveedores en el sistema", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+
 					
 				}else {
 					
@@ -145,6 +158,14 @@ public class InterfazPrincipal extends JFrame {
 		mnNewMenu_4.add(mntmNewMenuItem_11);
 		
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Realizar Orden de Compra");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				RealizarOrden r = new RealizarOrden();
+				r.setVisible(true);
+				r.setLocationRelativeTo(null);
+			}
+		});
 		mnNewMenu_4.add(mntmNewMenuItem_5);
 		mnNewMenu_3.add(mntmNewMenuItem_3);
 		contentPane = new JPanel();

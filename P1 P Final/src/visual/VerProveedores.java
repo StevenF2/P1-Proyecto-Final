@@ -41,6 +41,7 @@ public class VerProveedores extends JDialog {
 	 * Create the dialog.
 	 */
 	public VerProveedores() {
+		setResizable(false);
 		
 		DefaultListModel proveedores = new DefaultListModel();
 		ArrayList <Proveedor> pro = new ArrayList<Proveedor>();
@@ -52,6 +53,7 @@ public class VerProveedores extends JDialog {
 		contentPanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		setLocationRelativeTo(null);
 		{
 			JScrollPane scrollPane = new JScrollPane();
 			scrollPane.setBounds(10, 39, 414, 174);

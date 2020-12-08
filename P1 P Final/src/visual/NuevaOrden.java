@@ -76,6 +76,8 @@ public class NuevaOrden extends JDialog {
 	 * Create the dialog.
 	 */
 	public NuevaOrden() {
+		setResizable(false);
+		setLocationRelativeTo(null);
 		setTitle("Nueva Orden de Compra");
 		
 		DefaultListModel proveedores = new DefaultListModel();
@@ -615,6 +617,8 @@ public class NuevaOrden extends JDialog {
 					
 					OrdenDeCompra o = null;
 					float costo = 0;
+					Proveedor proveedor = null;
+					proveedor = orden.get(i).getProveedor();
 					
 					for(Componente c : comp) {
 						
@@ -622,7 +626,7 @@ public class NuevaOrden extends JDialog {
 					}
 					
 					
-					o = new OrdenDeCompra(comp, costo);
+					o = new OrdenDeCompra(comp, costo, proveedor);
 					orden.add(o);
 					
 					Tienda.getInstance().getProveedores().get(i).getOrdenes().add(o);

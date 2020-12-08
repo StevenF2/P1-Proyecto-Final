@@ -623,18 +623,28 @@ public class NuevoProveedor extends JDialog {
 					OrdenDeCompra o = null;
 					float costo = 0;
 					
+					String nombre = txtNombre.getText();
+					String rnc = txtRNC.getText();					
+					
+					
 					for(Componente c : comp) {
 						
 						costo += c.getPrecioCompra();
 					}
 					
-					
-					o = new OrdenDeCompra(comp, costo);
+				//	p = new Proveedor()
+					o = new OrdenDeCompra(comp, costo, p);
 					orden.add(o);
-					String nombre = txtNombre.getText();
-					String rnc = txtRNC.getText();
+				//	p = new Proveedor(nombre, rnc, orden);
 					
+				// Hace 2 cosas, 	
 					p = new Proveedor(nombre, rnc, orden);
+					
+					o = new OrdenDeCompra(comp, costo, p);
+					orden.set(0, o);
+				//	orden.set((Tienda.getInstance().getIdOrdenes())-1, o);
+					
+				//	p = new Proveedor(nombre, rnc, orden);
 					
 					if(costo > 0) {
 					
@@ -910,7 +920,8 @@ public class NuevoProveedor extends JDialog {
 							lista.addElement(tipo+"              "+clase+"                  "+"Costo Unitario ="+costo+"$RD");
 							costoOrden += costo;
 							
-							clean();
+							clean2();
+							
 													
 						}
 						txtCostoTotal.setText(""+costoOrden);
@@ -940,6 +951,28 @@ public class NuevoProveedor extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+
+	protected void clean2() {
+		
+		
+		txtMBcosto.setText("");
+		txtMBmarca.setText("");
+		txtMBmodelo.setText("");
+		txtMBtiposocket.setText("");
+		txtMcosto.setText("");
+		txtMmarca.setText("");
+		txtMmodelo.setText("");
+		txtMtiposocket.setText("");
+		txtMvelocidad.setText("");
+		txtMRcosto.setText("");
+		txtMRmarca.setText("");
+		txtMRmemoria.setText("");
+		txtDDmarca.setText("");
+		txtDDmodelo.setText("");
+		txtDDalmacenamiento.setText("");
+		txtDDcosto.setText("");
+		
 	}
 
 	protected void clean() {
