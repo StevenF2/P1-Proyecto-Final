@@ -301,7 +301,7 @@ public class RealizarOrden extends JDialog {
 				
 				ordenes.addElement(k);
 				k++;
-				
+				//
 			} 
 			
 		

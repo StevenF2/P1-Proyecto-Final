@@ -103,7 +103,7 @@ public class NuevoProveedor extends JDialog {
 		ArrayList <OrdenDeCompra> orden = new ArrayList<OrdenDeCompra>();
 		ArrayList <Componente> comp = new ArrayList<Componente>();	
 		comp.clear();
-		
+		//
 		
 		DefaultListModel lista = new DefaultListModel();
 		

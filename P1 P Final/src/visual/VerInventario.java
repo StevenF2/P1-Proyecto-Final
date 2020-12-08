@@ -173,7 +173,7 @@ public class VerInventario extends JDialog {
 			
 			DLM.addElement("ID: "+c.getNumSerie()+"     "+tipo+"              "+clase+"                  "+"Costo Unitario ="+costo+"$RD"+"          "+"Precio Unitario ="+venta+"$RD"+"          "+"Disponibles: "+c.getCantDisponible());
 		//	DLM.addElement(comp.size());
-			
+			//
 			
 		}
 		

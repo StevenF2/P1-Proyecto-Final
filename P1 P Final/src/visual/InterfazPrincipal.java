@@ -51,6 +51,7 @@ public class InterfazPrincipal extends JFrame {
 		dim = getToolkit().getScreenSize();
 		super.setSize(dim.width, dim.height-45);
 		setLocationRelativeTo(null);
+		int x = 0;
 		
 		
 		JMenuBar menuBar = new JMenuBar();

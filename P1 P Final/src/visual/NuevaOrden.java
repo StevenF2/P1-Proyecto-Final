@@ -640,6 +640,7 @@ public class NuevaOrden extends JDialog {
 						
 						proveedores.addElement(p.getNombre()+"      "+p.getRnc()+"         "+"Cuenta con "+p.getOrdenes().size()+" Ordenes de Compra");
 						
+						//
 						}
 					clean();
 					lista.clear();
