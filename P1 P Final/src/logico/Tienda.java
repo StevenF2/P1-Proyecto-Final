@@ -264,7 +264,7 @@ public class Tienda {
 			return  balance;
 		}
 		
-	    public  void buscarComponentes(String producto, boolean bol, String ped2, String ped3) {
+	    public ArrayList<Componente> buscarComponentes(String producto, boolean bol, String ped2, String ped3) {
 		
 		int i = 0;
 		
@@ -315,7 +315,8 @@ public class Tienda {
 						}
 				}	
 				
-			}			
+			}
+		return Pedido;			
 			
 	}
 	
