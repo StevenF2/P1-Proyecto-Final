@@ -80,6 +80,7 @@ public class SistemadeVentas extends JDialog {
 	private	String modelo  = "";
 	private	String precio = "";
 	private	int cant = 0;
+	private float valor =0;
 
 
 	public static void main(String[] args) {	
@@ -923,7 +924,8 @@ public class SistemadeVentas extends JDialog {
 					panel_MemoriaRam.setVisible(false);
 					panel_CarritoCompras.setVisible(false);
 					panel_ProductSelected.setVisible(true);
-					ArrayList <Componente> encontrado = Tienda.getInstance().buscarComponentes(Component, bol, ped2, ped3);
+					ArrayList <Componente> encontrado = new ArrayList<Componente>();
+							Tienda.getInstance().buscarComponentes(Component, bol, ped2, ped3);
 					DefaultTableModel model = (DefaultTableModel) table_carrocompras.getModel();
 				for(int i = 0; i < encontrado.size(); i++) {   
 					         
@@ -1216,7 +1218,7 @@ public class SistemadeVentas extends JDialog {
 		table_2.setFont(new Font("Dialog", Font.BOLD, 12));
 		table_2.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"#", "Marca", "Modelo", "Precio"},
+				{"Objeto", "Marca", "Modelo", "Precio"},
 			},
 			new String[] {
 				"New column", "New column", "New column", "New column"
@@ -1293,10 +1295,16 @@ public class SistemadeVentas extends JDialog {
 				 precio  = table_2.getValueAt(rowclicked, 4).toString();
 	
 				 DefaultTableModel model = (DefaultTableModel) table_carrocompras.getModel();
-				 String data[] = {"#",compe,marca,modelo,Cantidad_acomprar.getValue().toString(),precio};
+				 String data[] = {compe,marca,modelo,Cantidad_acomprar.getValue().toString(),precio};
 				 model.addRow(data);	
 				 
 				table_carrocompras.setAutoCreateRowSorter(true);
+				
+				for (int i = 0; i < table_carrocompras.getRowCount(); i++) {
+					String costo = (String) table_carrocompras.getValueAt(i, 6);
+						valor +=  Float.parseFloat(costo);
+					}
+				
 				
 			}
 		});
@@ -1335,10 +1343,10 @@ public class SistemadeVentas extends JDialog {
 				table_carrocompras.setFont(new Font("Dialog", Font.BOLD, 12));
 				table_carrocompras.setModel(new DefaultTableModel(
 					new Object[][] {
-						{"#", "Producto", "Marca", "Modelo", "Cantidad", "Precio"},
+						{ "Producto", "Marca", "Modelo", "Cantidad", "Precio"},
 					},
 					new String[] {
-						"New column", "New column", "New column", "New column", "New column", "New column"
+						 "New column", "New column", "New column", "New column", "New column"
 					}
 				));
 				
@@ -1363,7 +1371,7 @@ public class SistemadeVentas extends JDialog {
 				tglbtnVolverAComprar.setBounds(12, 197, 163, 25);
 				panel_CarritoCompras.add(tglbtnVolverAComprar);
 			}
-			//	Factura f = new Factura(null, null, componente, null, null, (float) 0.0);
+			
 				
 				tglbtnRealizarCompra.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -1379,11 +1387,8 @@ public class SistemadeVentas extends JDialog {
 				lblTotalAPagar.setBounds(170, 170, 104, 15);
 				panel_CarritoCompras.add(lblTotalAPagar);
 			}
-			{
-			
-			//	String costo =  Float.toString(f.getPrecioTotal());
-				String costo = "0.0"; //para probar
-				CostoTotal = new JTextField(costo);
+			{	
+				CostoTotal = new JTextField(Float.toString(valor));
 				CostoTotal.setEditable(false);
 				CostoTotal.setBounds(280, 166, 115, 19);
 				panel_CarritoCompras.add(CostoTotal);
