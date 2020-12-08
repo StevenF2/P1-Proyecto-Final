@@ -7,8 +7,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import logico.Administrador;
 import logico.Control;
 import logico.Empleado;
+import logico.Factura;
+import logico.Vendedor;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -16,7 +19,9 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JRadioButton;
 
 public class Registro extends JFrame {
 
@@ -61,59 +66,88 @@ public class Registro extends JFrame {
 		
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Arial", Font.PLAIN, 12));
-		lblNombre.setBounds(26, 21, 46, 14);
+		lblNombre.setBounds(26, 11, 46, 14);
 		panel.add(lblNombre);
 		
 		textNombre = new JTextField();
 		textNombre.setFont(new Font("Arial", Font.PLAIN, 12));
-		textNombre.setBounds(26, 46, 178, 20);
+		textNombre.setBounds(26, 36, 178, 20);
 		panel.add(textNombre);
 		textNombre.setColumns(10);
 		
 		JLabel lblCedula = new JLabel("C\u00E9dula");
 		lblCedula.setFont(new Font("Arial", Font.PLAIN, 12));
-		lblCedula.setBounds(26, 77, 46, 14);
+		lblCedula.setBounds(26, 67, 46, 14);
 		panel.add(lblCedula);
 		
 		textCedula = new JTextField();
 		textCedula.setFont(new Font("Arial", Font.PLAIN, 12));
-		textCedula.setBounds(26, 102, 178, 20);
+		textCedula.setBounds(26, 92, 178, 20);
 		panel.add(textCedula);
 		textCedula.setColumns(10);
 		
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Arial", Font.PLAIN, 12));
-		lblUsuario.setBounds(26, 133, 46, 14);
+		lblUsuario.setBounds(26, 123, 46, 14);
 		panel.add(lblUsuario);
 		
 		textUsuario = new JTextField();
 		textUsuario.setFont(new Font("Arial", Font.PLAIN, 12));
-		textUsuario.setBounds(26, 158, 178, 20);
+		textUsuario.setBounds(26, 148, 178, 20);
 		panel.add(textUsuario);
 		textUsuario.setColumns(10);
 		
 		lblContrasena = new JLabel("Contrase\u00F1a");
 		lblContrasena.setFont(new Font("Arial", Font.PLAIN, 12));
-		lblContrasena.setBounds(26, 189, 82, 14);
+		lblContrasena.setBounds(26, 179, 82, 14);
 		panel.add(lblContrasena);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(26, 214, 178, 20);
+		passwordField.setBounds(26, 204, 178, 20);
 		panel.add(passwordField);
 		
 		JButton btnFinalizar = new JButton("Finalizar");
+		btnFinalizar.setFont(new Font("Arial", Font.PLAIN, 12));
+		btnFinalizar.setBounds(325, 213, 89, 23);
+		panel.add(btnFinalizar);
+		
+		JRadioButton rdbtnVendedor = new JRadioButton("Vendedor");
+		rdbtnVendedor.setFont(new Font("Arial", Font.PLAIN, 12));
+		rdbtnVendedor.setBounds(226, 46, 109, 23);
+		panel.add(rdbtnVendedor);
+		
+		JRadioButton rdbtnAdministrador = new JRadioButton("Administrador\r\n");
+		rdbtnAdministrador.setFont(new Font("Arial", Font.PLAIN, 12));
+		rdbtnAdministrador.setBounds(226, 77, 109, 23);
+		panel.add(rdbtnAdministrador);
+		
+		rdbtnVendedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnAdministrador.setSelected(false);
+			}
+		});
+		
+		rdbtnAdministrador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnVendedor.setSelected(false);
+			}
+		});
+		
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Empleado nuevo = new Empleado(textNombre.getText(), textCedula.getText(), 0, 0, null, textUsuario.getText(), "alberto");
-				Control.getInstance().regUser(nuevo);
+				if(rdbtnAdministrador.getIcon() != null) {
+					Administrador nuevo = new Administrador(textNombre.getText(), textCedula.getText(), 0, 0, null, textUsuario.getText(), passwordField.getText());
+					Control.getInstance().regUser(nuevo);
+				} else {
+					Vendedor nuevo = new Vendedor(textNombre.getText(), textCedula.getText(), 0, 0, null, textUsuario.getText(), passwordField.getText(), 0);
+					Control.getInstance().regUser(nuevo);
+				}
 				Login login = new Login();
 				dispose();
 				login.setVisible(true);
 			}
 		});
-		btnFinalizar.setFont(new Font("Arial", Font.PLAIN, 12));
-		btnFinalizar.setBounds(325, 213, 89, 23);
-		panel.add(btnFinalizar);
+		
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
