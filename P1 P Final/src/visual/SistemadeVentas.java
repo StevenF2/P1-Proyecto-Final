@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
 
 import logico.Factura;
 import logico.Componente;
@@ -59,15 +60,23 @@ public class SistemadeVentas extends JDialog {
 	String Producto = "";
 	String CompMBconRAM = "";
 	String ConMBconDD = "";
-	String MPvelocidad = "";
+	boolean MPvelocidad = false;
 	String MRAMAlma = "";
 	String TipoRAM = "";
-	String DDAlma = "";
+	boolean DDAlma = false;
 	String ConexionDD = "";
+	boolean bol = false;
+	String ped2 = "";
+	String ped3 = "";
+	String Component = "";
 	
 
 	public static void main(String[] args) {
-		
+		try{
+		    UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+		} catch(Exception e){
+		    System.out.println(e);
+		}
 		try {
 			SistemadeVentas dialog = new SistemadeVentas();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -81,7 +90,7 @@ public class SistemadeVentas extends JDialog {
 	 * Create the dialog.
 	 */
 	public SistemadeVentas() {
-		setBounds(100, 100, 578, 317);
+		setBounds(100, 100, 580, 320);
 		getContentPane().setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
 		dim = getToolkit().getScreenSize();
@@ -115,10 +124,12 @@ public class SistemadeVentas extends JDialog {
 		//Botones del almacenamiento de disco duro
 	
 		JRadioButton rdbtnGbDD = new JRadioButton("GB");
+		rdbtnGbDD.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnGbDD.setVisible(false);
 		rdbtnGbDD.setActionCommand( 
 				rdbtnGbDD.getText() );
 		JRadioButton rdbtnTbDD = new JRadioButton("TB");
+		rdbtnTbDD.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnTbDD.setVisible(false);
 		rdbtnTbDD.setActionCommand( 
 				rdbtnTbDD.getText() );
@@ -126,15 +137,19 @@ public class SistemadeVentas extends JDialog {
 		//Para evitar overlap en el panel anterior al que corresponden
 		//Botones de la conexion de disco duro
 		JRadioButton rdbtnIDEDD = new JRadioButton("IDE");
+		rdbtnIDEDD.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnIDEDD.setActionCommand( 
 				rdbtnIDEDD.getText() );
 		JRadioButton rdbtnSataDD = new JRadioButton("SATA");
+		rdbtnSataDD.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnSataDD.setActionCommand( 
 				rdbtnSataDD.getText() );
 		JRadioButton rdbtnSata2DD = new JRadioButton("SATA-2");
+		rdbtnSata2DD.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnSata2DD.setActionCommand( 
 				rdbtnSata2DD.getText() );
 		JRadioButton rdbtnSata3DD = new JRadioButton("SATA-3");
+		rdbtnSata3DD.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnSata2DD.setActionCommand( 
 				rdbtnSata2DD.getText() );
 		
@@ -146,21 +161,27 @@ public class SistemadeVentas extends JDialog {
 		//Para evitar overlap en el panel anterior al que corresponden
 		//Botones los detalles de la memoria RAM
 		JRadioButton rdbtnGbMR = new JRadioButton("GB");
+		rdbtnGbMR.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnGbMR.setActionCommand( 
 				rdbtnGbMR.getText() );
 		JRadioButton rdbtnMbMR = new JRadioButton("MB");
+		rdbtnMbMR.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnMbMR.setActionCommand( 
 				rdbtnMbMR.getText() );
 		JRadioButton rdbtnDdrMR = new JRadioButton("DDR");
+		rdbtnDdrMR.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnDdrMR.setActionCommand( 
 				rdbtnDdrMR.getText() );
 		JRadioButton rdbtnDdr_1MR = new JRadioButton("DDR-2");
+		rdbtnDdr_1MR.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnDdr_1MR.setActionCommand( 
 				rdbtnDdr_1MR.getText() );
 		JRadioButton rdbtnDdr_2MR = new JRadioButton("DDR-3");
+		rdbtnDdr_2MR.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnDdr_2MR.setActionCommand( 
 				rdbtnDdr_2MR.getText() );
 		JRadioButton rdbtnDdr_3MR = new JRadioButton("DDR-4");
+		rdbtnDdr_3MR.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnDdr_3MR.setActionCommand( 
 				rdbtnDdr_3MR.getText() );
 		
@@ -180,27 +201,35 @@ public class SistemadeVentas extends JDialog {
 		//Botones los detalles de la MotherBoard
 				
 		JRadioButton rdbtnDdrMB = new JRadioButton("DDR");
+		rdbtnDdrMB.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnDdr_3MR.setActionCommand( 
 				rdbtnDdr_3MR.getText() );
 		JRadioButton rdbtnDdr_2MB = new JRadioButton("DDR-2");
+		rdbtnDdr_2MB.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnDdr_2MB.setActionCommand( 
 				rdbtnDdr_2MB.getText() );
 		JRadioButton rdbtnDdr_3MB = new JRadioButton("DDR-3");
+		rdbtnDdr_3MB.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnDdr_3MB.setActionCommand( 
 				rdbtnDdr_3MB.getText() );
 		JRadioButton rdbtnDdr_4MB = new JRadioButton("DDR-4");
+		rdbtnDdr_4MB.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnDdr_4MB.setActionCommand( 
 				rdbtnDdr_4MB.getText() );
 		JRadioButton rdbtnIdeMB = new JRadioButton("IDE");
+		rdbtnIdeMB.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnIdeMB.setActionCommand( 
 				rdbtnIdeMB.getText() );
 		JRadioButton rdbtnSataMB = new JRadioButton("SATA");
+		rdbtnSataMB.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnSataMB.setActionCommand( 
 				rdbtnSataMB.getText() );
 		JRadioButton rdbtnSata_2MB = new JRadioButton("SATA-2");
+		rdbtnSata_2MB.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnSata_2MB.setActionCommand( 
 				rdbtnSata_2MB.getText() );
 		JRadioButton rdbtnSata_3MB = new JRadioButton("SATA-3");
+		rdbtnSata_3MB.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnSata_3MB.setActionCommand( 
 				rdbtnSata_3MB.getText() );
 		
@@ -223,14 +252,32 @@ public class SistemadeVentas extends JDialog {
 						
 		
 		JRadioButton rdbtnGh = new JRadioButton("GHz");
+		rdbtnGh.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnGh.setActionCommand( 
 				rdbtnGh.getText() );
 		JRadioButton rdbtnMhz = new JRadioButton("MHz");
+		rdbtnMhz.setFont(new Font("Dialog", Font.BOLD, 14));
 		rdbtnMhz.setActionCommand( 
 				rdbtnMhz.getText() );
 		
 		rdbtnGh.setVisible(false);
 		rdbtnMhz.setVisible(false);
+		
+		JToggleButton tglbtnAtrsMP = new JToggleButton("Atrás");
+		JToggleButton tglbtnSiguienteMP = new JToggleButton("Siguiente");
+		JToggleButton tglbtnAtrsDD = new JToggleButton("Atrás");
+		JToggleButton tglbtnSiguiente1 = new JToggleButton("Siguiente");
+		JToggleButton tglbtnVolverAComprar = new JToggleButton("Volver a Comprar");
+		JToggleButton tglbtnEliminarProducto = new JToggleButton("Eliminar producto");	
+		JToggleButton tglbtnRealizarCompra = new JToggleButton("Realizar Compra");
+
+		tglbtnAtrsMP.setVisible(false);
+		tglbtnSiguienteMP.setVisible(false);
+		tglbtnAtrsDD.setVisible(false);
+		tglbtnSiguiente1.setVisible(false);
+		tglbtnVolverAComprar.setVisible(false);
+		tglbtnEliminarProducto.setVisible(false);
+		tglbtnRealizarCompra.setVisible(false);
 		
 		ArrayList <Factura> factura = new ArrayList<Factura>();
 		ArrayList <Componente> componente = new ArrayList<Componente>();	
@@ -241,7 +288,7 @@ public class SistemadeVentas extends JDialog {
 		
 	//Panel para elegir el producto	
 		
-		panel_productoaelegir.setBounds(12, 40, 554, 190);
+		panel_productoaelegir.setBounds(12, 52, 554, 228);
 		contentPanel.add(panel_productoaelegir);
 		panel_productoaelegir.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPanel.setLayout(null);
@@ -250,23 +297,28 @@ public class SistemadeVentas extends JDialog {
 		
 		
 		JRadioButton rdbtnDiscoDuro = new JRadioButton("Disco duro");
-		rdbtnDiscoDuro.setBounds(8, 35, 149, 23);
+		rdbtnDiscoDuro.setFont(new Font("Dialog", Font.BOLD, 14));
+		rdbtnDiscoDuro.setBounds(8, 77, 149, 23);
 		panel_productoaelegir.add(rdbtnDiscoDuro);
 		
 		JLabel lblProductoAComprar = new JLabel("Producto a comprar:");
-		lblProductoAComprar.setBounds(8, 12, 149, 15);
+		lblProductoAComprar.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblProductoAComprar.setBounds(8, 12, 204, 15);
 		panel_productoaelegir.add(lblProductoAComprar);
 		
 		JRadioButton rdbtnMotherboard = new JRadioButton("MotherBoard");
-		rdbtnMotherboard.setBounds(8, 92, 149, 23);
+		rdbtnMotherboard.setFont(new Font("Dialog", Font.BOLD, 14));
+		rdbtnMotherboard.setBounds(8, 141, 149, 23);
 		panel_productoaelegir.add(rdbtnMotherboard);
 		
 		JRadioButton rdbtnMemoriaRam = new JRadioButton("Memoria RAM");
-		rdbtnMemoriaRam.setBounds(325, 35, 149, 23);
+		rdbtnMemoriaRam.setFont(new Font("Dialog", Font.BOLD, 14));
+		rdbtnMemoriaRam.setBounds(325, 77, 149, 23);
 		panel_productoaelegir.add(rdbtnMemoriaRam);
 		
 		JRadioButton rdbtnMicroprocesador = new JRadioButton(" Microprocesador");
-		rdbtnMicroprocesador.setBounds(325, 92, 149, 23);
+		rdbtnMicroprocesador.setFont(new Font("Dialog", Font.BOLD, 14));
+		rdbtnMicroprocesador.setBounds(325, 141, 188, 23);
 		panel_productoaelegir.add(rdbtnMicroprocesador);
 		
 	
@@ -332,6 +384,13 @@ public class SistemadeVentas extends JDialog {
 						panel_MemoriaRam.setVisible(false);
 						panel_CarritoCompras.setVisible(false);
 						panel_ProductSelected.setVisible(false);
+						tglbtnAtrsMP.setVisible(false);
+						tglbtnSiguienteMP.setVisible(false);
+						tglbtnAtrsDD.setVisible(true);
+						tglbtnSiguiente1.setVisible(true);
+						tglbtnVolverAComprar.setVisible(false);
+						tglbtnEliminarProducto.setVisible(false);
+						tglbtnRealizarCompra.setVisible(false);
 					}
 					if(rdbtnMemoriaRam.isSelected()) {			
 						panel_productoaelegir.setVisible(false);
@@ -382,13 +441,20 @@ public class SistemadeVentas extends JDialog {
 						panel_MemoriaRam.setVisible(false);
 						panel_CarritoCompras.setVisible(false);
 						panel_ProductSelected.setVisible(false);
+						tglbtnAtrsMP.setVisible(true);
+						tglbtnSiguienteMP.setVisible(true);
+						tglbtnAtrsDD.setVisible(false);
+						tglbtnSiguiente1.setVisible(false);
+						tglbtnVolverAComprar.setVisible(false);
+						tglbtnEliminarProducto.setVisible(false);
+						tglbtnRealizarCompra.setVisible(false);
 					}
 				
 				}
 			
 		});
 		
-		tglbtnSiguiente.setBounds(424, 141, 118, 25);
+		tglbtnSiguiente.setBounds(424, 191, 118, 25);
 		panel_productoaelegir.add(tglbtnSiguiente);
 		
 		
@@ -396,7 +462,7 @@ public class SistemadeVentas extends JDialog {
 		
 		
 			
-			panel_MotherBoard.setBounds(12, 34, 554, 234);
+			panel_MotherBoard.setBounds(12, 52, 554, 228);
 			contentPanel.add(panel_MotherBoard);
 			contentPanel.setLayout(null);
 			setLocationRelativeTo(null);
@@ -404,7 +470,8 @@ public class SistemadeVentas extends JDialog {
 			
 			{
 				JLabel lblCompatibleConRam = new JLabel("Compatible con RAM:");
-				lblCompatibleConRam.setBounds(2, 34, 153, 15);
+				lblCompatibleConRam.setFont(new Font("Dialog", Font.BOLD, 14));
+				lblCompatibleConRam.setBounds(2, 34, 200, 15);
 				panel_MotherBoard.add(lblCompatibleConRam);
 			}
 			{
@@ -559,20 +626,23 @@ public class SistemadeVentas extends JDialog {
 			panel_MotherBoard.add(tglbtnSiguienteMB);
 			
 			JLabel lblMotherboard = new JLabel("MotherBoard");
-			lblMotherboard.setFont(new Font("Dialog", Font.BOLD, 14));
-			lblMotherboard.setBounds(196, 8, 124, 15);
+			lblMotherboard.setFont(new Font("Dialog", Font.BOLD, 16));
+			lblMotherboard.setBounds(196, 8, 131, 15);
 			panel_MotherBoard.add(lblMotherboard);	
-		
+			
+			
 		//Panel para elegir velocidad del microprocesador
 			
-			panel_Microprocesador.setBounds(12, 44, 554, 212);
+			panel_Microprocesador.setBounds(12, 52, 554, 228);
 			contentPanel.add(panel_Microprocesador);
 			contentPanel.setLayout(null);
 			setLocationRelativeTo(null);
+			
 			panel_Microprocesador.setLayout(null);
 			{
 				JLabel lblVelocidadDelMicroprocesador = new JLabel("Velocidad del Microprocesador:");
-				lblVelocidadDelMicroprocesador.setBounds(8, 57, 232, 15);
+				lblVelocidadDelMicroprocesador.setFont(new Font("Dialog", Font.BOLD, 14));
+				lblVelocidadDelMicroprocesador.setBounds(8, 57, 270, 15);
 				panel_Microprocesador.add(lblVelocidadDelMicroprocesador);
 			}
 			
@@ -597,7 +667,7 @@ public class SistemadeVentas extends JDialog {
 			
 			
 			{
-				JToggleButton tglbtnAtrsMP = new JToggleButton("Atrás");
+				
 				tglbtnAtrsMP.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						panel_productoaelegir.setVisible(true);
@@ -608,20 +678,22 @@ public class SistemadeVentas extends JDialog {
 						panel_MemoriaRam.setVisible(false);
 						panel_CarritoCompras.setVisible(false);
 						panel_ProductSelected.setVisible(false);
+						
 					}
 				});
-				tglbtnAtrsMP.setBounds(12, 175, 95, 25);
+				tglbtnAtrsMP.setBounds(12, 197, 95, 25);
 				panel_Microprocesador.add(tglbtnAtrsMP);
 			}
 			{
-				JToggleButton tglbtnSiguienteMP = new JToggleButton("Siguiente");
+				
 				tglbtnSiguienteMP.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 										
 						if(rdbtnGh.isSelected()) {
-							MPvelocidad = "Ghz";
+							MPvelocidad = true;
 						}else if(rdbtnMhz.isSelected()) {
-							MPvelocidad = "Mhz";}
+							MPvelocidad = false;
+							}
 						
 				//		System.out.println(MPvelocidad);
 						
@@ -635,12 +707,12 @@ public class SistemadeVentas extends JDialog {
 						panel_ProductSelected.setVisible(true);
 					}
 				});
-				tglbtnSiguienteMP.setBounds(428, 175, 114, 25);
+				tglbtnSiguienteMP.setBounds(428, 197, 114, 25);
 				panel_Microprocesador.add(tglbtnSiguienteMP);
 			}
 			{
 				JLabel lblMicroprocesador = new JLabel("Microprocesador");
-				lblMicroprocesador.setFont(new Font("Dialog", Font.BOLD, 14));
+				lblMicroprocesador.setFont(new Font("Dialog", Font.BOLD, 16));
 				lblMicroprocesador.setBounds(208, 8, 156, 15);
 				panel_Microprocesador.add(lblMicroprocesador);
 			}
@@ -651,14 +723,15 @@ public class SistemadeVentas extends JDialog {
 		//Panel para elegir datos de la memoria RAM
 		
 		 
-			panel_MemoriaRam.setBounds(12, 55, 554, 213);
+			panel_MemoriaRam.setBounds(12, 52, 554, 228);
 			contentPanel.add(panel_MemoriaRam);
 			contentPanel.setLayout(null);
 			setLocationRelativeTo(null);
 			panel_MemoriaRam.setLayout(null);
 			
 			JLabel lblCantidadDeAlmacenamiento = new JLabel("Cantidad de Almacenamiento:");
-			lblCantidadDeAlmacenamiento.setBounds(12, 31, 219, 15);
+			lblCantidadDeAlmacenamiento.setFont(new Font("Dialog", Font.BOLD, 14));
+			lblCantidadDeAlmacenamiento.setBounds(12, 31, 259, 15);
 			panel_MemoriaRam.add(lblCantidadDeAlmacenamiento);
 			
 		
@@ -685,6 +758,7 @@ public class SistemadeVentas extends JDialog {
 			panel_MemoriaRam.add(rdbtnGbMR);
 			
 			JLabel lblTipo = new JLabel("Tipo:");
+			lblTipo.setFont(new Font("Dialog", Font.BOLD, 14));
 			lblTipo.setBounds(12, 96, 70, 15);
 			panel_MemoriaRam.add(lblTipo);
 			
@@ -742,7 +816,7 @@ public class SistemadeVentas extends JDialog {
 			panel_MemoriaRam.add(rdbtnDdr_3MR);
 			
 			JLabel lblMemoriaRam = new JLabel("Memoria RAM");
-			lblMemoriaRam.setFont(new Font("Dialog", Font.BOLD, 14));
+			lblMemoriaRam.setFont(new Font("Dialog", Font.BOLD, 16));
 			lblMemoriaRam.setBounds(197, 4, 130, 15);
 			panel_MemoriaRam.add(lblMemoriaRam);
 			
@@ -759,7 +833,7 @@ public class SistemadeVentas extends JDialog {
 					panel_ProductSelected.setVisible(false);
 				}
 			});
-			tglbtnAtrsMR.setBounds(12, 180, 104, 25);
+			tglbtnAtrsMR.setBounds(12, 197, 104, 25);
 			panel_MemoriaRam.add(tglbtnAtrsMR);
 			
 			
@@ -793,13 +867,13 @@ public class SistemadeVentas extends JDialog {
 					panel_ProductSelected.setVisible(true);
 				}
 			});
-			tglbtnSiguiente3.setBounds(412, 180, 130, 25);
+			tglbtnSiguiente3.setBounds(412, 197, 130, 25);
 			panel_MemoriaRam.add(tglbtnSiguiente3);
-			
+		
 		//Panel para pedir Tipo de Almacenamiento del Disco Duro
 		
 	
-		panel_DiscoDuro.setBounds(12, 52, 554, 183);
+		panel_DiscoDuro.setBounds(12, 52, 554, 228);
 		contentPanel.add(panel_DiscoDuro);
 		contentPanel.setLayout(null);
 		setLocationRelativeTo(null);
@@ -807,11 +881,12 @@ public class SistemadeVentas extends JDialog {
 
 		{
 			JLabel lblDiscoDuro = new JLabel("Disco Duro");
-			lblDiscoDuro.setFont(new Font("Dialog", Font.BOLD, 14));
+			lblDiscoDuro.setFont(new Font("Dialog", Font.BOLD, 16));
 			lblDiscoDuro.setBounds(221, 6, 104, 15);
 			panel_DiscoDuro.add(lblDiscoDuro);
 			JLabel lblAlmacenamiento = new JLabel("Almacenamiento: ");
-			lblAlmacenamiento.setBounds(12, 34, 137, 15);
+			lblAlmacenamiento.setFont(new Font("Dialog", Font.BOLD, 14));
+			lblAlmacenamiento.setBounds(12, 34, 161, 15);
 			panel_DiscoDuro.add(lblAlmacenamiento);
 		}
 	
@@ -828,14 +903,14 @@ public class SistemadeVentas extends JDialog {
 					rdbtnTbDD.setSelected(false);
 				}
 			});
-			rdbtnGbDD.setBounds(12, 61, 149, 23);
+			rdbtnGbDD.setBounds(12, 81, 149, 23);
 			panel_DiscoDuro.add(rdbtnGbDD);
 			
 			
-			rdbtnTbDD.setBounds(12, 102, 149, 23);
+			rdbtnTbDD.setBounds(12, 140, 149, 23);
 			
 			panel_DiscoDuro.add(rdbtnTbDD);
-			JToggleButton tglbtnAtrsDD = new JToggleButton("Atrás");
+			
 			tglbtnAtrsDD.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					panel_productoaelegir.setVisible(true);
@@ -848,17 +923,18 @@ public class SistemadeVentas extends JDialog {
 					panel_ProductSelected.setVisible(false);
 				}
 			});
-			tglbtnAtrsDD.setBounds(12, 146, 82, 25);
+			tglbtnAtrsDD.setBounds(12, 197, 82, 25);
 				panel_DiscoDuro.add(tglbtnAtrsDD);
 				
-			JToggleButton tglbtnSiguiente1 = new JToggleButton("Siguiente");
+				
 			tglbtnSiguiente1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if(rdbtnGbDD.isSelected()) {
-						DDAlma = "GB";
+						DDAlma = false;
 					}else if(rdbtnTbDD.isSelected()) {
-						DDAlma = "TB";
+						DDAlma = true;
 					}
+					
 			//		System.out.println(DDAlma);
 			 
 					panel_productoaelegir.setVisible(false);
@@ -877,14 +953,14 @@ public class SistemadeVentas extends JDialog {
 				}
 			});
 			
-			tglbtnSiguiente1.setBounds(424, 146, 118, 25);
+			tglbtnSiguiente1.setBounds(424, 197, 118, 25);
 			panel_DiscoDuro.add(tglbtnSiguiente1);
 		
 		
 		
 		// Panel para pedir el tipo de conexión del Disco Duro
 		
-		panel_ConexionDiscoDuro.setBounds(12, 52, 554, 171);
+		panel_ConexionDiscoDuro.setBounds(12, 52, 554, 228);
 		contentPanel.add(panel_ConexionDiscoDuro);
 		contentPanel.setLayout(null);
 		setLocationRelativeTo(null);
@@ -893,7 +969,8 @@ public class SistemadeVentas extends JDialog {
 		
 		
 			JLabel lblAlmacenamiento = new JLabel("Tipo de conexión:");
-			lblAlmacenamiento.setBounds(12, 39, 137, 15);
+			lblAlmacenamiento.setFont(new Font("Dialog", Font.BOLD, 14));
+			lblAlmacenamiento.setBounds(12, 39, 202, 15);
 			panel_ConexionDiscoDuro.add(lblAlmacenamiento);
 		
 			rdbtnIDEDD.addActionListener(new ActionListener() {
@@ -904,12 +981,12 @@ public class SistemadeVentas extends JDialog {
 					rdbtnSata3DD.setSelected(false);
 				}
 			});
-			rdbtnIDEDD.setBounds(12, 62, 149, 23);
+			rdbtnIDEDD.setBounds(12, 72, 149, 23);
 			panel_ConexionDiscoDuro.add(rdbtnIDEDD);
 		
 		
 			
-			rdbtnSataDD.setBounds(397, 62, 149, 23);
+			rdbtnSataDD.setBounds(397, 72, 149, 23);
 			panel_ConexionDiscoDuro.add(rdbtnSataDD);
 			rdbtnSataDD.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -920,7 +997,7 @@ public class SistemadeVentas extends JDialog {
 				}
 			});
 		
-			rdbtnSata2DD.setBounds(12, 89, 149, 23);
+			rdbtnSata2DD.setBounds(12, 127, 149, 23);
 			panel_ConexionDiscoDuro.add(rdbtnSata2DD);
 			rdbtnSata2DD.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -931,7 +1008,7 @@ public class SistemadeVentas extends JDialog {
 				}
 			});
 		
-			rdbtnSata3DD.setBounds(397, 89, 149, 23);
+			rdbtnSata3DD.setBounds(397, 127, 149, 23);
 			panel_ConexionDiscoDuro.add(rdbtnSata3DD);
 			rdbtnSata3DD.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -956,7 +1033,7 @@ public class SistemadeVentas extends JDialog {
 					panel_ProductSelected.setVisible(false);
 				}
 			});
-			tglbtnAtrsDD2.setBounds(12, 134, 82, 25);
+			tglbtnAtrsDD2.setBounds(12, 197, 82, 25);
 			panel_ConexionDiscoDuro.add(tglbtnAtrsDD2);
 			
 			JToggleButton tglbtnSiguienteDD2 = new JToggleButton("Siguiente");
@@ -972,7 +1049,7 @@ public class SistemadeVentas extends JDialog {
 						ConexionDD = "SATA-3";
 					}
 				//	System.out.println(ConexionDD);
-				 
+					
 					panel_productoaelegir.setVisible(false);
 					panel_DiscoDuro.setVisible(false);
 					panel_ConexionDiscoDuro.setVisible(false);
@@ -981,23 +1058,36 @@ public class SistemadeVentas extends JDialog {
 					panel_MemoriaRam.setVisible(false);
 					panel_CarritoCompras.setVisible(false);
 					panel_ProductSelected.setVisible(true);
-					
+					Component = Producto;
+					if(Component == "Disco Duro") {
+						ped2 = ConMBconDD;
+						ped3 = null;
+					}else if (Component == "Microprocesador") {
+						ped2 = null;
+						ped3 = null;
+					}else if (Component == "Motherboard") {
+						ped2 = CompMBconRAM;
+						ped3 = ConMBconDD;
+					}else if (Component == "Memoria Ram") {
+						ped2 = MRAMAlma;
+						ped3 = null;
+					}
 				}
 			});
-			tglbtnSiguienteDD2.setBounds(424, 134, 118, 25);
+			tglbtnSiguienteDD2.setBounds(424, 197, 118, 25);
 			panel_ConexionDiscoDuro.add(tglbtnSiguienteDD2);
 		
-		
 			JLabel lblDiscoDuro = new JLabel("Disco Duro");
-			lblDiscoDuro.setFont(new Font("Dialog", Font.BOLD, 14));
+			lblDiscoDuro.setFont(new Font("Dialog", Font.BOLD, 16));
 			lblDiscoDuro.setBounds(223, 8, 105, 15);
 			panel_ConexionDiscoDuro.add(lblDiscoDuro);
+			
 		
 	
 		//Panel para elegir los productos con las caracteristicas elegidas
 		
 		panel_CarritoCompras.setVisible(false);
-		panel_ProductSelected.setBounds(12, 44, 554, 250);
+		panel_ProductSelected.setBounds(12, 52, 554, 228);
 		contentPanel.add(panel_ProductSelected);
 		contentPanel.setLayout(null);
 		setLocationRelativeTo(null);
@@ -1007,42 +1097,35 @@ public class SistemadeVentas extends JDialog {
 		txtVariables.setEditable(false);
 		//presentar las opciones elegidas
 
-		txtVariables.setText("Variables");
-		txtVariables.setBounds(0, 20, 542, 19);
-		panel_ProductSelected.add(txtVariables);
-		txtVariables.setColumns(10);
+	
+		
+
 		
 		
 		JLabel lblProductosQueCumplen = new JLabel("Productos que cumplen con las características:");
-		lblProductosQueCumplen.setBounds(5, 5, 367, 15);
+		lblProductosQueCumplen.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblProductosQueCumplen.setBounds(68, 10, 437, 15);
 		panel_ProductSelected.add(lblProductosQueCumplen);
 		
 		table_2 = new JTable();
+		table_2.setFont(new Font("Dialog", Font.BOLD, 12));
 		table_2.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"#", "Marca", "Modelo", "Almacenamiento", "Precio"},
+				{"#", "Marca", "Modelo", "Precio"},
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column"
+				"New column", "New column", "New column", "New column"
 			}
 		));
 		table_2.setBounds(0, 42, 542, 120);
 		panel_ProductSelected.add(table_2);
 		
-		panel_ProductSelected.setBounds(12, 44, 554, 220);
+		panel_ProductSelected.setBounds(12, 44, 554, 228);
 		contentPanel.add(panel_ProductSelected);
 		contentPanel.setLayout(null);
 		setLocationRelativeTo(null);
 		panel_ProductSelected.setLayout(null);
-		{
-			txtVariables = new JTextField();
-			txtVariables.setEditable(false);	
-			
-			txtVariables.setText("");
-			txtVariables.setBounds(0, 20, 542, 19);
-			panel_ProductSelected.add(txtVariables);
-			txtVariables.setColumns(10);
-		}
+		
 		
 		table_2 = new JTable();
 		table_2.setModel(new DefaultTableModel(
@@ -1067,10 +1150,17 @@ public class SistemadeVentas extends JDialog {
 				panel_MemoriaRam.setVisible(false);
 				panel_CarritoCompras.setVisible(false);
 				panel_ProductSelected.setVisible(false);
+				tglbtnAtrsMP.setVisible(false);
+				tglbtnSiguienteMP.setVisible(false);
+				tglbtnAtrsDD.setVisible(false);
+				tglbtnSiguiente1.setVisible(false);
+				tglbtnVolverAComprar.setVisible(false);
+				tglbtnEliminarProducto.setVisible(false);
+				tglbtnRealizarCompra.setVisible(false);
 				
 			}
 		});
-		tglbtnAtrsPS.setBounds(0, 195, 93, 25);
+		tglbtnAtrsPS.setBounds(0, 197, 93, 25);
 		panel_ProductSelected.add(tglbtnAtrsPS);
 		
 		JToggleButton tglbtnVerCarrito = new JToggleButton("Ver Carrito");
@@ -1084,24 +1174,39 @@ public class SistemadeVentas extends JDialog {
 				panel_MemoriaRam.setVisible(false);
 				panel_CarritoCompras.setVisible(true);
 				panel_ProductSelected.setVisible(false);
+				tglbtnAtrsMP.setVisible(false);
+				tglbtnSiguienteMP.setVisible(false);
+				tglbtnAtrsDD.setVisible(false);
+				tglbtnSiguiente1.setVisible(false);
+				tglbtnVolverAComprar.setVisible(true);
+				tglbtnEliminarProducto.setVisible(true);
+				tglbtnRealizarCompra.setVisible(true);
 				
 			}
 		});
-		tglbtnVerCarrito.setBounds(166, 195, 167, 25);
+		tglbtnVerCarrito.setBounds(166, 197, 167, 25);
 		panel_ProductSelected.add(tglbtnVerCarrito);
-		
+		Tienda t = null;
+		Componente c = null;
+		Tienda find;
+		int row_number = 1;
 		JToggleButton tglbtnAgregarAlCarrito = new JToggleButton("Agregar al Carrito");
 		tglbtnAgregarAlCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Agregar el producto al carrito
+				
+				t.buscarComponentes(Component, bol, ped2, ped3);
 				table_carrocompras.setAutoCreateRowSorter(true);
-				String data[] = {};
 				DefaultTableModel model = (DefaultTableModel) table_carrocompras.getModel();
-				model.addRow(data);
+				String data[] = {};
+			//	String data[] = {Integer.toString(model.getRowCount()+1),};
+			//	{"#", "Marca", "Modelo", "Almacenamiento", "Precio"},
+				
+				 model.addRow(data);
+				
 				
 			}
 		});
-		tglbtnAgregarAlCarrito.setBounds(375, 195, 167, 25);
+		tglbtnAgregarAlCarrito.setBounds(375, 197, 167, 25);
 		panel_ProductSelected.add(tglbtnAgregarAlCarrito);
 		
 		 
@@ -1109,19 +1214,20 @@ public class SistemadeVentas extends JDialog {
 		  
 		 {
 
-			panel_CarritoCompras.setBounds(12, 44, 554, 212);
+			panel_CarritoCompras.setBounds(12, 52, 554, 228);
 			contentPanel.add(panel_CarritoCompras);
 			contentPanel.setLayout(null);
 			setLocationRelativeTo(null);
 			panel_CarritoCompras.setLayout(null);
 			{
 				JLabel lblCarritoDeCompras = new JLabel("Carrito de Compras");
-				lblCarritoDeCompras.setFont(new Font("Dialog", Font.BOLD, 14));
-				lblCarritoDeCompras.setBounds(189, 5, 163, 15);
+				lblCarritoDeCompras.setFont(new Font("Dialog", Font.BOLD, 16));
+				lblCarritoDeCompras.setBounds(189, 5, 193, 15);
 				panel_CarritoCompras.add(lblCarritoDeCompras);
 			}
 			
 				table_carrocompras = new JTable(1,6);
+				table_carrocompras.setFont(new Font("Dialog", Font.BOLD, 12));
 				table_carrocompras.setModel(new DefaultTableModel(
 					new Object[][] {
 						{"#", "Producto", "Marca", "Modelo", "Cantidad", "Precio"},
@@ -1130,14 +1236,13 @@ public class SistemadeVentas extends JDialog {
 						"New column", "New column", "New column", "New column", "New column", "New column"
 					}
 				));
-				table_carrocompras.setBounds(10, 25, 532, 110);
+				table_carrocompras.setBounds(10, 25, 532, 133);
 				panel_CarritoCompras.add(table_carrocompras);
 				
 				
 				
 			
-			{
-				JToggleButton tglbtnVolverAComprar = new JToggleButton("Volver a Comprar");
+			{	
 				tglbtnVolverAComprar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						panel_productoaelegir.setVisible(true);
@@ -1152,23 +1257,23 @@ public class SistemadeVentas extends JDialog {
 						panel_ProductSelected.setVisible(false);
 					}
 				});
-				tglbtnVolverAComprar.setBounds(12, 175, 163, 25);
+				tglbtnVolverAComprar.setBounds(12, 197, 163, 25);
 				panel_CarritoCompras.add(tglbtnVolverAComprar);
 			}
 				Factura f = new Factura(null, null, componente, null, null, (float) 0.0);
-				JToggleButton tglbtnRealizarCompra = new JToggleButton("Realizar Compra");
+				
 				tglbtnRealizarCompra.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						
 						factura.add(f);
 					}
 				});
-				tglbtnRealizarCompra.setBounds(202, 175, 150, 25);
+				tglbtnRealizarCompra.setBounds(202, 197, 150, 25);
 				panel_CarritoCompras.add(tglbtnRealizarCompra);
 			
 			{
 				JLabel lblTotalAPagar = new JLabel("Total a pagar: ");
-				lblTotalAPagar.setBounds(174, 146, 104, 15);
+				lblTotalAPagar.setBounds(170, 170, 104, 15);
 				panel_CarritoCompras.add(lblTotalAPagar);
 			}
 			{
@@ -1177,20 +1282,21 @@ public class SistemadeVentas extends JDialog {
 				String costo = "0.0"; //para probar
 				CostoTotal = new JTextField(costo);
 				CostoTotal.setEditable(false);
-				CostoTotal.setBounds(281, 144, 115, 19);
+				CostoTotal.setBounds(280, 166, 115, 19);
 				panel_CarritoCompras.add(CostoTotal);
 				CostoTotal.setColumns(10);
 			}
 		}
 		 
-		 JToggleButton tglbtnEliminarProducto = new JToggleButton("Eliminar producto");
+		
 		 tglbtnEliminarProducto.addActionListener(new ActionListener() {
 		 	public void actionPerformed(ActionEvent arg0) {
 		 		DefaultTableModel model = (DefaultTableModel) table_carrocompras.getModel();
 			//	model.rowsRemoved(event);
 		 	}
 		 });
-		 tglbtnEliminarProducto.setBounds(375, 175, 167, 25);
+		 tglbtnEliminarProducto.setBounds(375, 197, 167, 25);
 		 panel_CarritoCompras.add(tglbtnEliminarProducto);
+		 
 	}
 }

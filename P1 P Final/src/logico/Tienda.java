@@ -292,7 +292,7 @@ public class Tienda {
 								Pedido.add(c);
 							}
 					}
-			}else if(producto.equalsIgnoreCase("MotherBoard")) {
+			}else if(producto.equalsIgnoreCase("Mother Board")) {
 				Motherboard MB = (Motherboard) c;
 					if(MB.getTipoRam() == ped2) {
 						for(i=0;i<2;i++) {
