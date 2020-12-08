@@ -1197,10 +1197,11 @@ public class SistemadeVentas extends JDialog {
 				t.buscarComponentes(Component, bol, ped2, ped3);
 				table_carrocompras.setAutoCreateRowSorter(true);
 				DefaultTableModel model = (DefaultTableModel) table_carrocompras.getModel();
-				String data[] = {Integer.toString(model.getRowCount()+1),};
+				String data[] = {};
+			//	String data[] = {Integer.toString(model.getRowCount()+1),};
 			//	{"#", "Marca", "Modelo", "Almacenamiento", "Precio"},
 				
-				model.addRow(data);
+				 model.addRow(data);
 				
 				
 			}
