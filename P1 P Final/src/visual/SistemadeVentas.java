@@ -13,9 +13,29 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import logico.Factura;
+import logico.Componente;
+import logico.DDR1;
+import logico.DDR2;
+import logico.DDR3;
+import logico.DDR4;
+import logico.DiscoDuro;
+import logico.IDE;
+import logico.MemoriaRam;
+import logico.Microprocesador;
+import logico.Motherboard;
+import logico.SATA;
+import logico.SATA2;
+import logico.SATA3;
+import logico.SATA4;
+import logico.Tienda;
+
+
 import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
@@ -29,13 +49,25 @@ public class SistemadeVentas extends JDialog {
 	private JTextField textField_1;
 	private JTextField txtVariables;
 	private JTable table_2;
-	private JTable table_3;
+	private JTable table_carrocompras;
 	private JTextField CostoTotal;
 
 	/**
 	 * Launch the application.
 	 */
+	
+	String Producto = "";
+	String CompMBconRAM = "";
+	String ConMBconDD = "";
+	String MPvelocidad = "";
+	String MRAMAlma = "";
+	String TipoRAM = "";
+	String DDAlma = "";
+	String ConexionDD = "";
+	
+
 	public static void main(String[] args) {
+		
 		try {
 			SistemadeVentas dialog = new SistemadeVentas();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -49,7 +81,7 @@ public class SistemadeVentas extends JDialog {
 	 * Create the dialog.
 	 */
 	public SistemadeVentas() {
-		setBounds(100, 100, 578, 331);
+		setBounds(100, 100, 578, 317);
 		getContentPane().setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
 		dim = getToolkit().getScreenSize();
@@ -84,15 +116,27 @@ public class SistemadeVentas extends JDialog {
 	
 		JRadioButton rdbtnGbDD = new JRadioButton("GB");
 		rdbtnGbDD.setVisible(false);
+		rdbtnGbDD.setActionCommand( 
+				rdbtnGbDD.getText() );
 		JRadioButton rdbtnTbDD = new JRadioButton("TB");
 		rdbtnTbDD.setVisible(false);
+		rdbtnTbDD.setActionCommand( 
+				rdbtnTbDD.getText() );
 		
 		//Para evitar overlap en el panel anterior al que corresponden
 		//Botones de la conexion de disco duro
 		JRadioButton rdbtnIDEDD = new JRadioButton("IDE");
+		rdbtnIDEDD.setActionCommand( 
+				rdbtnIDEDD.getText() );
 		JRadioButton rdbtnSataDD = new JRadioButton("SATA");
+		rdbtnSataDD.setActionCommand( 
+				rdbtnSataDD.getText() );
 		JRadioButton rdbtnSata2DD = new JRadioButton("SATA-2");
+		rdbtnSata2DD.setActionCommand( 
+				rdbtnSata2DD.getText() );
 		JRadioButton rdbtnSata3DD = new JRadioButton("SATA-3");
+		rdbtnSata2DD.setActionCommand( 
+				rdbtnSata2DD.getText() );
 		
 		rdbtnSataDD.setVisible(false);
 		rdbtnIDEDD.setVisible(false);
@@ -102,11 +146,24 @@ public class SistemadeVentas extends JDialog {
 		//Para evitar overlap en el panel anterior al que corresponden
 		//Botones los detalles de la memoria RAM
 		JRadioButton rdbtnGbMR = new JRadioButton("GB");
+		rdbtnGbMR.setActionCommand( 
+				rdbtnGbMR.getText() );
 		JRadioButton rdbtnMbMR = new JRadioButton("MB");
+		rdbtnMbMR.setActionCommand( 
+				rdbtnMbMR.getText() );
 		JRadioButton rdbtnDdrMR = new JRadioButton("DDR");
+		rdbtnDdrMR.setActionCommand( 
+				rdbtnDdrMR.getText() );
 		JRadioButton rdbtnDdr_1MR = new JRadioButton("DDR-2");
+		rdbtnDdr_1MR.setActionCommand( 
+				rdbtnDdr_1MR.getText() );
 		JRadioButton rdbtnDdr_2MR = new JRadioButton("DDR-3");
+		rdbtnDdr_2MR.setActionCommand( 
+				rdbtnDdr_2MR.getText() );
 		JRadioButton rdbtnDdr_3MR = new JRadioButton("DDR-4");
+		rdbtnDdr_3MR.setActionCommand( 
+				rdbtnDdr_3MR.getText() );
+		
 		JToggleButton tglbtnAtrsMR = new JToggleButton("Atrás");
 		JToggleButton tglbtnSiguiente3 = new JToggleButton("Siguiente");
 		
@@ -123,13 +180,30 @@ public class SistemadeVentas extends JDialog {
 		//Botones los detalles de la MotherBoard
 				
 		JRadioButton rdbtnDdrMB = new JRadioButton("DDR");
+		rdbtnDdr_3MR.setActionCommand( 
+				rdbtnDdr_3MR.getText() );
 		JRadioButton rdbtnDdr_2MB = new JRadioButton("DDR-2");
+		rdbtnDdr_2MB.setActionCommand( 
+				rdbtnDdr_2MB.getText() );
 		JRadioButton rdbtnDdr_3MB = new JRadioButton("DDR-3");
+		rdbtnDdr_3MB.setActionCommand( 
+				rdbtnDdr_3MB.getText() );
 		JRadioButton rdbtnDdr_4MB = new JRadioButton("DDR-4");
+		rdbtnDdr_4MB.setActionCommand( 
+				rdbtnDdr_4MB.getText() );
 		JRadioButton rdbtnIdeMB = new JRadioButton("IDE");
+		rdbtnIdeMB.setActionCommand( 
+				rdbtnIdeMB.getText() );
 		JRadioButton rdbtnSataMB = new JRadioButton("SATA");
+		rdbtnSataMB.setActionCommand( 
+				rdbtnSataMB.getText() );
 		JRadioButton rdbtnSata_2MB = new JRadioButton("SATA-2");
+		rdbtnSata_2MB.setActionCommand( 
+				rdbtnSata_2MB.getText() );
 		JRadioButton rdbtnSata_3MB = new JRadioButton("SATA-3");
+		rdbtnSata_3MB.setActionCommand( 
+				rdbtnSata_3MB.getText() );
+		
 		JToggleButton tglbtnAtrsMB = new JToggleButton("Atrás");
 		JToggleButton tglbtnSiguienteMB = new JToggleButton("Siguiente");
 		
@@ -149,18 +223,21 @@ public class SistemadeVentas extends JDialog {
 						
 		
 		JRadioButton rdbtnGh = new JRadioButton("GHz");
+		rdbtnGh.setActionCommand( 
+				rdbtnGh.getText() );
 		JRadioButton rdbtnMhz = new JRadioButton("MHz");
+		rdbtnMhz.setActionCommand( 
+				rdbtnMhz.getText() );
+		
 		rdbtnGh.setVisible(false);
 		rdbtnMhz.setVisible(false);
 		
+		ArrayList <Factura> factura = new ArrayList<Factura>();
+		ArrayList <Componente> componente = new ArrayList<Componente>();	
 		
 		
 		contentPanel.setLayout(null);
-		setLocationRelativeTo(null);
-		
-		
-		
-		
+		setLocationRelativeTo(null);	
 		
 	//Panel para elegir el producto	
 		
@@ -192,6 +269,7 @@ public class SistemadeVentas extends JDialog {
 		rdbtnMicroprocesador.setBounds(325, 92, 149, 23);
 		panel_productoaelegir.add(rdbtnMicroprocesador);
 		
+	
 		
 		rdbtnDiscoDuro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -230,74 +308,84 @@ public class SistemadeVentas extends JDialog {
 			}
 		});
 		
-		
 		JToggleButton tglbtnSiguiente = new JToggleButton("Siguiente");
 		tglbtnSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(rdbtnDiscoDuro.isSelected()) {	//si se selecciona disco duro y presiona sigte. sale opciones de Disco Duro			
-					panel_productoaelegir.setVisible(false);
-					panel_DiscoDuro.setVisible(true);
-					rdbtnTbDD.setVisible(true);
-					rdbtnGbDD.setVisible(true);
-					panel_ConexionDiscoDuro.setVisible(false);
-					panel_MotherBoard.setVisible(false);
-				 	panel_Microprocesador.setVisible(false);
-					panel_MemoriaRam.setVisible(false);
-					panel_CarritoCompras.setVisible(false);
-					panel_ProductSelected.setVisible(false);
+				if(rdbtnDiscoDuro.isSelected()) {
+					Producto = "Disco Duro";
+				}else if(rdbtnMotherboard.isSelected()) {
+					Producto = "Mother Board";
+				}else if(rdbtnMemoriaRam.isSelected()) {
+					Producto = "Memoria Ram";
+				}else if(rdbtnMicroprocesador.isSelected()) {
+					Producto = "Microprocesador";
 				}
-				if(rdbtnMemoriaRam.isSelected()) {			
-					panel_productoaelegir.setVisible(false);
-					panel_DiscoDuro.setVisible(false);
-					panel_ConexionDiscoDuro.setVisible(false);
-					panel_MotherBoard.setVisible(false);
-				 	panel_Microprocesador.setVisible(false);
-					panel_MemoriaRam.setVisible(true);
-					rdbtnGbMR.setVisible(true);
-					rdbtnMbMR.setVisible(true);
-					rdbtnDdrMR.setVisible(true);
-					rdbtnDdr_1MR.setVisible(true);
-					rdbtnDdr_2MR.setVisible(true);
-					rdbtnDdr_3MR.setVisible(true);
-					tglbtnAtrsMR.setVisible(true);
-					tglbtnSiguiente3.setVisible(true);
-					panel_CarritoCompras.setVisible(false);
-					panel_ProductSelected.setVisible(false);
-				}
-				if(rdbtnMotherboard.isSelected()) {			
-					panel_productoaelegir.setVisible(false);
-					panel_DiscoDuro.setVisible(false);
-					panel_ConexionDiscoDuro.setVisible(false);
-					panel_MotherBoard.setVisible(true);
-					rdbtnDdrMB.setVisible(true);
-					rdbtnDdr_2MB.setVisible(true);
-					rdbtnDdr_3MB.setVisible(true);
-					rdbtnDdr_4MB.setVisible(true);
-					tglbtnAtrsMB.setVisible(true);
-					tglbtnSiguienteMB.setVisible(true);
-					rdbtnIdeMB.setVisible(true);
-					rdbtnSataMB.setVisible(true);
-					rdbtnSata_2MB.setVisible(true);
-					rdbtnSata_3MB.setVisible(true);
-				 	panel_Microprocesador.setVisible(false);
-					panel_MemoriaRam.setVisible(false);
-					panel_CarritoCompras.setVisible(false);
-					panel_ProductSelected.setVisible(false);
-				}
-				if(rdbtnMicroprocesador.isSelected()) {			
-					panel_productoaelegir.setVisible(false);
-					panel_DiscoDuro.setVisible(false);
-					panel_ConexionDiscoDuro.setVisible(false);
-					panel_MotherBoard.setVisible(false);
-				 	panel_Microprocesador.setVisible(true);
-				 	rdbtnGh.setVisible(true);
-					rdbtnMhz.setVisible(true);
-					panel_MemoriaRam.setVisible(false);
-					panel_CarritoCompras.setVisible(false);
-					panel_ProductSelected.setVisible(false);
+		//		System.out.println(Producto);
+					if(rdbtnDiscoDuro.isSelected()) {				
+						panel_productoaelegir.setVisible(false);
+						panel_DiscoDuro.setVisible(true);
+						rdbtnTbDD.setVisible(true);
+						rdbtnGbDD.setVisible(true);
+						panel_ConexionDiscoDuro.setVisible(false);
+						panel_MotherBoard.setVisible(false);
+					 	panel_Microprocesador.setVisible(false);
+						panel_MemoriaRam.setVisible(false);
+						panel_CarritoCompras.setVisible(false);
+						panel_ProductSelected.setVisible(false);
+					}
+					if(rdbtnMemoriaRam.isSelected()) {			
+						panel_productoaelegir.setVisible(false);
+						panel_DiscoDuro.setVisible(false);
+						panel_ConexionDiscoDuro.setVisible(false);
+						panel_MotherBoard.setVisible(false);
+					 	panel_Microprocesador.setVisible(false);
+						panel_MemoriaRam.setVisible(true);
+						rdbtnGbMR.setVisible(true);
+						rdbtnMbMR.setVisible(true);
+						rdbtnDdrMR.setVisible(true);
+						rdbtnDdr_1MR.setVisible(true);
+						rdbtnDdr_2MR.setVisible(true);
+						rdbtnDdr_3MR.setVisible(true);
+						tglbtnAtrsMR.setVisible(true);
+						tglbtnSiguiente3.setVisible(true);
+						panel_CarritoCompras.setVisible(false);
+						panel_ProductSelected.setVisible(false);
+					}
+					if(rdbtnMotherboard.isSelected()) {			
+						panel_productoaelegir.setVisible(false);
+						panel_DiscoDuro.setVisible(false);
+						panel_ConexionDiscoDuro.setVisible(false);
+						panel_MotherBoard.setVisible(true);
+						rdbtnDdrMB.setVisible(true);
+						rdbtnDdr_2MB.setVisible(true);
+						rdbtnDdr_3MB.setVisible(true);
+						rdbtnDdr_4MB.setVisible(true);
+						tglbtnAtrsMB.setVisible(true);
+						tglbtnSiguienteMB.setVisible(true);
+						rdbtnIdeMB.setVisible(true);
+						rdbtnSataMB.setVisible(true);
+						rdbtnSata_2MB.setVisible(true);
+						rdbtnSata_3MB.setVisible(true);
+					 	panel_Microprocesador.setVisible(false);
+						panel_MemoriaRam.setVisible(false);
+						panel_CarritoCompras.setVisible(false);
+						panel_ProductSelected.setVisible(false);
+					}
+					if(rdbtnMicroprocesador.isSelected()) {			
+						panel_productoaelegir.setVisible(false);
+						panel_DiscoDuro.setVisible(false);
+						panel_ConexionDiscoDuro.setVisible(false);
+						panel_MotherBoard.setVisible(false);
+					 	panel_Microprocesador.setVisible(true);
+					 	rdbtnGh.setVisible(true);
+						rdbtnMhz.setVisible(true);
+						panel_MemoriaRam.setVisible(false);
+						panel_CarritoCompras.setVisible(false);
+						panel_ProductSelected.setVisible(false);
+					}
+				
 				}
 			
-			}
 		});
 		
 		tglbtnSiguiente.setBounds(424, 141, 118, 25);
@@ -306,7 +394,7 @@ public class SistemadeVentas extends JDialog {
 		
 		//Panel para elegir MotherBoard Conexion y Compatibilidad con RAM
 		
-		{
+		
 			
 			panel_MotherBoard.setBounds(12, 34, 554, 234);
 			contentPanel.add(panel_MotherBoard);
@@ -432,10 +520,30 @@ public class SistemadeVentas extends JDialog {
 			});
 			tglbtnAtrsMB.setBounds(12, 197, 72, 25);
 			panel_MotherBoard.add(tglbtnAtrsMB);
-			
+
 			
 			tglbtnSiguienteMB.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					if(rdbtnDdrMB.isSelected()) {
+						CompMBconRAM = "DDR";
+					}else if(rdbtnDdr_2MB.isSelected()) {
+						CompMBconRAM = "DDR-2";
+					}else if(rdbtnDdr_3MB.isSelected()) {
+						CompMBconRAM = "DDR-3";
+					}else if(rdbtnDdr_4MB.isSelected()) {
+						CompMBconRAM = "DDR-4";
+					}
+		//			System.out.println(CompMBconRAM);
+					if(rdbtnIdeMB.isSelected()) {
+						ConMBconDD = "IDE";
+					}else if(rdbtnSataMB.isSelected()) {
+						ConMBconDD = "SATA";
+					}else if(rdbtnSata_2MB.isSelected()) {
+						ConMBconDD = "SATA-2";
+					}else if(rdbtnSata_3MB.isSelected()) {
+						ConMBconDD = "SATA-3";
+					}
+					System.out.println(ConMBconDD);
 					//proceder a encontrar producto
 					panel_productoaelegir.setVisible(false);
 					panel_DiscoDuro.setVisible(false);
@@ -453,15 +561,9 @@ public class SistemadeVentas extends JDialog {
 			JLabel lblMotherboard = new JLabel("MotherBoard");
 			lblMotherboard.setFont(new Font("Dialog", Font.BOLD, 14));
 			lblMotherboard.setBounds(196, 8, 124, 15);
-			panel_MotherBoard.add(lblMotherboard);
-		}
-		
-		
-		
+			panel_MotherBoard.add(lblMotherboard);	
 		
 		//Panel para elegir velocidad del microprocesador
-		
-		{
 			
 			panel_Microprocesador.setBounds(12, 44, 554, 212);
 			contentPanel.add(panel_Microprocesador);
@@ -489,6 +591,7 @@ public class SistemadeVentas extends JDialog {
 					rdbtnGh.setSelected(false);
 				}
 			});
+			
 			rdbtnMhz.setBounds(348, 103, 149, 23);
 			panel_Microprocesador.add(rdbtnMhz);
 			
@@ -514,6 +617,14 @@ public class SistemadeVentas extends JDialog {
 				JToggleButton tglbtnSiguienteMP = new JToggleButton("Siguiente");
 				tglbtnSiguienteMP.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
+										
+						if(rdbtnGh.isSelected()) {
+							MPvelocidad = "Ghz";
+						}else if(rdbtnMhz.isSelected()) {
+							MPvelocidad = "Mhz";}
+						
+				//		System.out.println(MPvelocidad);
+						
 						panel_productoaelegir.setVisible(false);
 						panel_DiscoDuro.setVisible(false);
 						panel_ConexionDiscoDuro.setVisible(false);
@@ -533,7 +644,7 @@ public class SistemadeVentas extends JDialog {
 				lblMicroprocesador.setBounds(208, 8, 156, 15);
 				panel_Microprocesador.add(lblMicroprocesador);
 			}
-		}
+		
 		
 		
 		
@@ -596,7 +707,7 @@ public class SistemadeVentas extends JDialog {
 					rdbtnDdr_3MR.setSelected(false);
 				}
 			});
-		
+			
 			
 			rdbtnDdr_1MR.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -653,7 +764,25 @@ public class SistemadeVentas extends JDialog {
 			
 			
 			tglbtnSiguiente3.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+				public void actionPerformed(ActionEvent e) {					
+					if(rdbtnMbMR.isSelected()) {
+						MRAMAlma = "MB";
+					}else if(rdbtnGbMR.isSelected()) {
+						MRAMAlma = "GB";
+					}
+			//		System.out.println(MRAMAlma);
+					
+					if(rdbtnDdrMR.isSelected()) {
+						TipoRAM = "DDR";
+					}else if(rdbtnDdr_1MR.isSelected()) {
+						TipoRAM = "DDR-2";
+					}else if(rdbtnDdr_2MR.isSelected()) {
+						TipoRAM = "DDR-3";
+					}else if(rdbtnDdr_3MR.isSelected()) {
+						TipoRAM = "DDR-4";
+					}
+			//		System.out.println(TipoRAM);
+					
 					panel_productoaelegir.setVisible(false);
 					panel_DiscoDuro.setVisible(false);
 					panel_ConexionDiscoDuro.setVisible(false);
@@ -666,12 +795,7 @@ public class SistemadeVentas extends JDialog {
 			});
 			tglbtnSiguiente3.setBounds(412, 180, 130, 25);
 			panel_MemoriaRam.add(tglbtnSiguiente3);
-		
-		
-		
-		
-		
-		
+			
 		//Panel para pedir Tipo de Almacenamiento del Disco Duro
 		
 	
@@ -730,6 +854,13 @@ public class SistemadeVentas extends JDialog {
 			JToggleButton tglbtnSiguiente1 = new JToggleButton("Siguiente");
 			tglbtnSiguiente1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					if(rdbtnGbDD.isSelected()) {
+						DDAlma = "GB";
+					}else if(rdbtnTbDD.isSelected()) {
+						DDAlma = "TB";
+					}
+			//		System.out.println(DDAlma);
+			 
 					panel_productoaelegir.setVisible(false);
 					panel_DiscoDuro.setVisible(false);
 					panel_ConexionDiscoDuro.setVisible(true);
@@ -765,7 +896,7 @@ public class SistemadeVentas extends JDialog {
 			lblAlmacenamiento.setBounds(12, 39, 137, 15);
 			panel_ConexionDiscoDuro.add(lblAlmacenamiento);
 		
-				rdbtnIDEDD.addActionListener(new ActionListener() {
+			rdbtnIDEDD.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					rdbtnIDEDD.setSelected(true);
 					rdbtnSataDD.setSelected(false);
@@ -831,6 +962,17 @@ public class SistemadeVentas extends JDialog {
 			JToggleButton tglbtnSiguienteDD2 = new JToggleButton("Siguiente");
 			tglbtnSiguienteDD2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					if(rdbtnIDEDD.isSelected()) {
+						ConexionDD = "IDE";
+					}else if(rdbtnSataDD.isSelected()) {
+						ConexionDD = "SATA";
+					}else if(rdbtnSata2DD.isSelected()) {
+						ConexionDD = "SATA-2";
+					}else if(rdbtnSata3DD.isSelected()) {
+						ConexionDD = "SATA-3";
+					}
+				//	System.out.println(ConexionDD);
+				 
 					panel_productoaelegir.setVisible(false);
 					panel_DiscoDuro.setVisible(false);
 					panel_ConexionDiscoDuro.setVisible(false);
@@ -854,20 +996,22 @@ public class SistemadeVentas extends JDialog {
 	
 		//Panel para elegir los productos con las caracteristicas elegidas
 		
-		
-		panel_ProductSelected.setBounds(12, 44, 554, 169);
+		panel_CarritoCompras.setVisible(false);
+		panel_ProductSelected.setBounds(12, 44, 554, 250);
 		contentPanel.add(panel_ProductSelected);
 		contentPanel.setLayout(null);
 		setLocationRelativeTo(null);
 		panel_ProductSelected.setLayout(null);
-		{
-			txtVariables = new JTextField();
-			txtVariables.setEditable(false);
-			txtVariables.setText("Variables");
-			txtVariables.setBounds(0, 20, 542, 19);
-			panel_ProductSelected.add(txtVariables);
-			txtVariables.setColumns(10);
-		}
+		
+		txtVariables = new JTextField();
+		txtVariables.setEditable(false);
+		//presentar las opciones elegidas
+
+		txtVariables.setText("Variables");
+		txtVariables.setBounds(0, 20, 542, 19);
+		panel_ProductSelected.add(txtVariables);
+		txtVariables.setColumns(10);
+		
 		
 		JLabel lblProductosQueCumplen = new JLabel("Productos que cumplen con las características:");
 		lblProductosQueCumplen.setBounds(5, 5, 367, 15);
@@ -892,8 +1036,9 @@ public class SistemadeVentas extends JDialog {
 		panel_ProductSelected.setLayout(null);
 		{
 			txtVariables = new JTextField();
-			txtVariables.setEditable(false);
-			txtVariables.setText("Variables");
+			txtVariables.setEditable(false);	
+			
+			txtVariables.setText("");
 			txtVariables.setBounds(0, 20, 542, 19);
 			panel_ProductSelected.add(txtVariables);
 			txtVariables.setColumns(10);
@@ -949,13 +1094,17 @@ public class SistemadeVentas extends JDialog {
 		tglbtnAgregarAlCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Agregar el producto al carrito
+				table_carrocompras.setAutoCreateRowSorter(true);
+				String data[] = {};
+				DefaultTableModel model = (DefaultTableModel) table_carrocompras.getModel();
+				model.addRow(data);
 				
 			}
 		});
 		tglbtnAgregarAlCarrito.setBounds(375, 195, 167, 25);
 		panel_ProductSelected.add(tglbtnAgregarAlCarrito);
 		
-		/* 
+		 
 		 //Panel Carrito de compras
 		  
 		 {
@@ -971,9 +1120,9 @@ public class SistemadeVentas extends JDialog {
 				lblCarritoDeCompras.setBounds(189, 5, 163, 15);
 				panel_CarritoCompras.add(lblCarritoDeCompras);
 			}
-			{
-				table_3 = new JTable();
-				table_3.setModel(new DefaultTableModel(
+			
+				table_carrocompras = new JTable(1,6);
+				table_carrocompras.setModel(new DefaultTableModel(
 					new Object[][] {
 						{"#", "Producto", "Marca", "Modelo", "Cantidad", "Precio"},
 					},
@@ -981,49 +1130,67 @@ public class SistemadeVentas extends JDialog {
 						"New column", "New column", "New column", "New column", "New column", "New column"
 					}
 				));
-				table_3.setBounds(10, 25, 532, 110);
-				panel_CarritoCompras.add(table_3);
-			}
+				table_carrocompras.setBounds(10, 25, 532, 110);
+				panel_CarritoCompras.add(table_carrocompras);
+				
+				
+				
+			
 			{
 				JToggleButton tglbtnVolverAComprar = new JToggleButton("Volver a Comprar");
-				tglbtnVolverAComprar.setBounds(12, 175, 167, 25);
+				tglbtnVolverAComprar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						panel_productoaelegir.setVisible(true);
+						panel_DiscoDuro.setVisible(false);
+						rdbtnTbDD.setVisible(false);
+						rdbtnGbDD.setVisible(false);
+						panel_ConexionDiscoDuro.setVisible(false);
+						panel_MotherBoard.setVisible(false);
+					 	panel_Microprocesador.setVisible(false);
+						panel_MemoriaRam.setVisible(false);
+						panel_CarritoCompras.setVisible(false);
+						panel_ProductSelected.setVisible(false);
+					}
+				});
+				tglbtnVolverAComprar.setBounds(12, 175, 163, 25);
 				panel_CarritoCompras.add(tglbtnVolverAComprar);
 			}
-			{
+				Factura f = new Factura(null, null, componente, null, null, (float) 0.0);
 				JToggleButton tglbtnRealizarCompra = new JToggleButton("Realizar Compra");
-				tglbtnRealizarCompra.setBounds(375, 175, 167, 25);
+				tglbtnRealizarCompra.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+						factura.add(f);
+					}
+				});
+				tglbtnRealizarCompra.setBounds(202, 175, 150, 25);
 				panel_CarritoCompras.add(tglbtnRealizarCompra);
-			}
+			
 			{
 				JLabel lblTotalAPagar = new JLabel("Total a pagar: ");
 				lblTotalAPagar.setBounds(174, 146, 104, 15);
 				panel_CarritoCompras.add(lblTotalAPagar);
 			}
 			{
-				CostoTotal = new JTextField();
+				Factura get = f;
+			//	String costo =  Float.toString(f.getPrecioTotal());
+				String costo = "0.0"; //para probar
+				CostoTotal = new JTextField(costo);
 				CostoTotal.setEditable(false);
 				CostoTotal.setBounds(281, 144, 115, 19);
 				panel_CarritoCompras.add(CostoTotal);
 				CostoTotal.setColumns(10);
 			}
 		}
-	
-		 */
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
-		}
+		 
+		 JToggleButton tglbtnEliminarProducto = new JToggleButton("Eliminar producto");
+		 tglbtnEliminarProducto.addActionListener(new ActionListener() {
+		 	public void actionPerformed(ActionEvent arg0) {
+		 		DefaultTableModel model = (DefaultTableModel) table_carrocompras.getModel();
+			//	model.rowsRemoved(event);
+		 	}
+		 });
+		 tglbtnEliminarProducto.setBounds(375, 175, 167, 25);
+		 panel_CarritoCompras.add(tglbtnEliminarProducto);
 	}
 }

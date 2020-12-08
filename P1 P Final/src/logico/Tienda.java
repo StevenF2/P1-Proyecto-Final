@@ -263,7 +263,61 @@ public class Tienda {
 			
 			return  balance;
 		}
-	
+		
+	    public  void buscarComponentes(String producto, boolean bol, String ped2, String ped3) {
+		
+		int i = 0;
+		
+		ArrayList <Componente> Pedido = null;
+			
+		
+			
+		for (Componente c : componentes) {
+			if(producto.equalsIgnoreCase("Disco Duro") && c instanceof DiscoDuro) {
+				DiscoDuro DD = (DiscoDuro) c;
+					if(DD.getGbTb() == bol) {
+						String tipoconexion = "";
+							if(DD instanceof SATA) {
+								tipoconexion = "SATA";
+							}else if(DD instanceof SATA2) {
+								tipoconexion = "SATA2";
+							}else if(DD instanceof SATA3) {
+								tipoconexion = "SATA3";
+							}else if(DD instanceof IDE) {
+								tipoconexion = "IDE";
+							}else if(DD instanceof SATA4) {
+								tipoconexion = "SATA4";
+							}
+							if(tipoconexion.equalsIgnoreCase(ped2)) {
+								Pedido.add(c);
+							}
+					}
+			}else if(producto.equalsIgnoreCase("MotherBoard")) {
+				Motherboard MB = (Motherboard) c;
+					if(MB.getTipoRam() == ped2) {
+						for(i=0;i<2;i++) {
+							if(MB.getConexionesDiscoDuro()[i].equalsIgnoreCase(ped3)) {
+								Pedido.add(c);
+							}
+						}			
+					}
+					
+				}else if(producto.equalsIgnoreCase("Microprocesador")) {
+					Microprocesador MP = (Microprocesador) c;
+						if(MP.getMHzGHz() == bol) {
+							Pedido.add(c);
+						}
+					
+				}else if(producto == "Memoria Ram") {
+					MemoriaRam MR = (MemoriaRam) c;
+						if(MR.isMbGb()==bol) {
+							Pedido.add(c);
+						}
+				}	
+				
+			}			
+			
+	}
 	
 
 }
