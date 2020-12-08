@@ -2,13 +2,16 @@ package visual;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
 
 import logico.Componente;
 import logico.DDR1;
@@ -27,46 +30,41 @@ import logico.SATA2;
 import logico.SATA3;
 import logico.SATA4;
 import logico.Tienda;
-
+import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
-public class NuevoProveedor extends JDialog {
+public class NuevaOrden extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField txtNombre;
-	private JTextField txtRNC;
-	private JTextField txtMBmarca;
-	private JTextField txtMBmodelo;
-	private JTextField txtMBtiposocket;
+	private JTextField txtDDmarca;
+	private JTextField txtDDmodelo;
+	private JTextField txtDDalmacenamiento;
+	private JTextField txtDDcosto;
+	private JTextField txtMRmarca;
+	private JTextField txtMRmemoria;
+	private JTextField txtMRcosto;
+	private JTextField txtMcosto;
 	private JTextField txtMmarca;
 	private JTextField txtMmodelo;
 	private JTextField txtMtiposocket;
 	private JTextField txtMvelocidad;
-	private JTextField txtMRmarca;
-	private JTextField txtMRmemoria;
-	private JTextField txtDDmarca;
-	private JTextField txtDDmodelo;
-	private JTextField txtDDalmacenamiento;
-	private JTextField txtCostoTotal;
 	private JTextField txtMBcosto;
-	private JTextField txtMcosto;
-	private JTextField txtMRcosto;
-	private JTextField txtDDcosto;
+	private JTextField txtMBmarca;
+	private JTextField txtMBmodelo;
+	private JTextField txtMBtiposocket;
+	private JTextField txtCostoTotal;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			NuevoProveedor dialog = new NuevoProveedor();
+			NuevaOrden dialog = new NuevaOrden();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -77,7 +75,15 @@ public class NuevoProveedor extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public NuevoProveedor() {
+	public NuevaOrden() {
+		setTitle("Nueva Orden de Compra");
+		
+		DefaultListModel proveedores = new DefaultListModel();
+		ArrayList <Proveedor> pro = new ArrayList<Proveedor>();
+		pro.addAll(Tienda.getInstance().getProveedores());
+		ArrayList <OrdenDeCompra> orden = new ArrayList<OrdenDeCompra>();
+		ArrayList <Componente> comp = new ArrayList<Componente>();	
+		comp.clear();
 		
 		JRadioButton rdbtnMotherBoard = new JRadioButton("Mother Board");
 		JRadioButton rdbtnMicroprocesador = new JRadioButton("Microprocesador");
@@ -94,67 +100,26 @@ public class NuevoProveedor extends JDialog {
 		JRadioButton rdbtnMBDDR2 = new JRadioButton("DDR-2");
 		JRadioButton rdbtnMBDDR3 = new JRadioButton("DDR-3");
 		JRadioButton rdbtnMBDDR4 = new JRadioButton("DDR-4");
+		JRadioButton rdbtnDDgb = new JRadioButton("Gb");
 		JRadioButton rdbtnDDtb = new JRadioButton("Tb");
 		JRadioButton rdbtnDDide = new JRadioButton("IDE");
 		JRadioButton rdbtnDDsata = new JRadioButton("SATA");
 		JRadioButton rdbtnDDsata2 = new JRadioButton("SATA-2");
 		JRadioButton rdbtnDDsata3 = new JRadioButton("SATA-3");
-
-		ArrayList <OrdenDeCompra> orden = new ArrayList<OrdenDeCompra>();
-		ArrayList <Componente> comp = new ArrayList<Componente>();	
-		comp.clear();
-		
 		
 		DefaultListModel lista = new DefaultListModel();
+		DefaultListModel listaS = new DefaultListModel();
 		
 		
-		
-		
-		setTitle("Nuevo Proveedor");
-		setResizable(false);
-		setBounds(100, 100, 536, 480);
+		setBounds(100, 100, 551, 501);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		setLocationRelativeTo(null);
 		
-		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setBounds(10, 11, 64, 14);
+		JLabel lblNewLabel = new JLabel("Seleccionar Suplidor:");
+		lblNewLabel.setBounds(10, 11, 160, 14);
 		contentPanel.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("RNC:");
-		lblNewLabel_1.setBounds(10, 36, 46, 14);
-		contentPanel.add(lblNewLabel_1);
-		
-		txtNombre = new JTextField();
-		txtNombre.setBounds(78, 9, 121, 20);
-		contentPanel.add(txtNombre);
-		txtNombre.setColumns(10);
-		
-		txtRNC = new JTextField();
-		txtRNC.setBounds(78, 34, 121, 20);
-		contentPanel.add(txtRNC);
-		txtRNC.setColumns(10);
-		
-		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(10, 61, 265, 292);
-		contentPanel.add(panel);
-		panel.setLayout(null);
-		
-		JLabel lblNewLabel_2 = new JLabel("Orden de Compra del Proveedor:");
-		lblNewLabel_2.setBounds(10, 11, 232, 14);
-		panel.add(lblNewLabel_2);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 52, 245, 229);
-		panel.add(scrollPane);
-		
-		JList list = new JList();
-		scrollPane.setViewportView(list);
-		
-		list.setModel(lista);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -235,7 +200,6 @@ public class NuevoProveedor extends JDialog {
 		rdbtnDiscoDuro.setBounds(6, 110, 109, 23);
 		panel_1.add(rdbtnDiscoDuro);
 		
-		
 		panel_DiscoDuro.setVisible(false);
 		panel_DiscoDuro.setBounds(285, 174, 239, 229);
 		contentPanel.add(panel_DiscoDuro);
@@ -268,9 +232,10 @@ public class NuevoProveedor extends JDialog {
 		panel_DiscoDuro.add(txtDDalmacenamiento);
 		txtDDalmacenamiento.setColumns(10);
 		
-		JRadioButton rdbtnDDgb = new JRadioButton("Gb");
+		
 		rdbtnDDgb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				rdbtnDDgb.setSelected(true);
 				rdbtnDDtb.setSelected(false);
 				
@@ -282,6 +247,7 @@ public class NuevoProveedor extends JDialog {
 		
 		rdbtnDDtb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				rdbtnDDgb.setSelected(false);
 				rdbtnDDtb.setSelected(true);
 				
@@ -608,18 +574,45 @@ public class NuevoProveedor extends JDialog {
 		txtCostoTotal.setBounds(118, 376, 86, 20);
 		contentPanel.add(txtCostoTotal);
 		txtCostoTotal.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 36, 263, 127);
+		contentPanel.add(scrollPane);
+		
+		JList listaSuplidores = new JList();
+		scrollPane.setViewportView(listaSuplidores);
+		listaSuplidores.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		listaSuplidores.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listaSuplidores.setModel(proveedores);
+		
+		JLabel lblNewLabel_1 = new JLabel("Componentes:");
+		lblNewLabel_1.setBounds(10, 174, 160, 14);
+		contentPanel.add(lblNewLabel_1);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(10, 199, 261, 164);
+		contentPanel.add(scrollPane_1);
+		
+		JList list = new JList();
+		scrollPane_1.setViewportView(list);
+		list.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setModel(lista);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			
-			JButton btnNewButton = new JButton("Agregar Proveedor");
+			JButton btnNewButton = new JButton("Agregar Orden ");
 			btnNewButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+				public void actionPerformed(ActionEvent arg0) {
 					
+					if(listaSuplidores.getSelectedIndex() >= 0) {
+					
+					int i = listaSuplidores.getSelectedIndex();
 					ArrayList <OrdenDeCompra> orden = new ArrayList<OrdenDeCompra>();
-					Proveedor p = null;
+					
 					OrdenDeCompra o = null;
 					float costo = 0;
 					
@@ -631,20 +624,28 @@ public class NuevoProveedor extends JDialog {
 					
 					o = new OrdenDeCompra(comp, costo);
 					orden.add(o);
-					String nombre = txtNombre.getText();
-					String rnc = txtRNC.getText();
 					
-					p = new Proveedor(nombre, rnc, orden);
+					Tienda.getInstance().getProveedores().get(i).getOrdenes().add(o);
 					
-					if(costo > 0) {
 					
 					Tienda.getInstance().IngresarOrdenDeCompra(o);
-					}
-					Tienda.getInstance().IngresarProveedor(p);
-					JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo Proveedor exitosamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-					lista.clear();
+				//	Tienda.getInstance().IngresarProveedor(p);
+					JOptionPane.showMessageDialog(null, "Se ha agregado una nueva orden al proveedor seleccionado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+					proveedores.clear();
+					for(Proveedor p : pro) {
+						
+						proveedores.addElement(p.getNombre()+"      "+p.getRnc()+"         "+"Cuenta con "+p.getOrdenes().size()+" Ordenes de Compra");
+						
+						}
 					clean();
+					lista.clear();
 					
+					}else {
+						
+						JOptionPane.showMessageDialog(null, "Seleccione un proveedor", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+						
+						
+					}
 					
 				}
 			});
@@ -660,12 +661,11 @@ public class NuevoProveedor extends JDialog {
 							float precioCompra = Float.parseFloat(txtMBcosto.getText());
 							float precioVenta = precioCompra + 200;
 							int cantDisponible = 0;
-							int numSerie = 0; // Tienda.getInstance().getIdComponentes();//Tienda.getTienda().getIdComponentes();
+							int numSerie = Tienda.getInstance().getIdProveedores();//Tienda.getTienda().getIdComponentes();
 							String marca = txtMBmarca.getText();
 							String modelo = txtMBmodelo.getText();
 							String tipoSocket = txtMBtiposocket.getText();
 							String tipoRam = null;
-							
 							
 							if(rdbtnMBDDR.isSelected()) {
 								tipoRam = "DDR";
@@ -703,7 +703,7 @@ public class NuevoProveedor extends JDialog {
 								
 								conexionesDiscoDuro[i] = "SATA3";
 								i++;
-							//	cantDisponible += 50;
+								
 							}
 							
 						//	float costo = Float.parseFloat(txtMBcosto.getText());
@@ -722,7 +722,7 @@ public class NuevoProveedor extends JDialog {
 							float precioCompra = Float.parseFloat(txtMcosto.getText());
 							float precioVenta = precioCompra + 400;
 							int cantDisponible = 0;
-							int numSerie = 0; // Tienda.getInstance().getIdComponentes();
+							int numSerie = 0; // Tienda.getTienda().getIdComponentes();
 							String marca = txtMmarca.getText();
 							String modelo = txtMmodelo.getText();
 							String tipoSocket = txtMtiposocket.getText();
@@ -752,7 +752,7 @@ public class NuevoProveedor extends JDialog {
 							float precioCompra = Float.parseFloat(txtMRcosto.getText());
 							float precioVenta = precioCompra + 300;
 							int cantDisponible = 0;
-							int numSerie = 0; // Tienda.getInstance().getIdComponentes();
+							int numSerie = 0; // Tienda.getTienda().getIdComponentes();
 							String marca = txtMRmarca.getText();
 							float cantiMemoria = Float.parseFloat(txtMRmemoria.getText());
 							Boolean MbGb = null;
@@ -796,7 +796,7 @@ public class NuevoProveedor extends JDialog {
 							float precioCompra = Float.parseFloat(txtDDcosto.getText());
 							float precioVenta = precioCompra + 500;
 							int cantDisponible = 0;
-							int numSerie = 0;	    // Tienda.getInstance().getIdComponentes();
+							int numSerie = 0; // Tienda.getTienda().getIdComponentes();
 							String marca = txtDDmarca.getText();
 							String modelo = txtDDmodelo.getText();
 							float almacenamiento = Float.parseFloat(txtDDalmacenamiento.getText());
@@ -838,7 +838,7 @@ public class NuevoProveedor extends JDialog {
 						
 					//	System.out.println();
 						lista.clear();
-						//float costoTotal = 0;
+					//	float costoTotal = 0;
 						float costoOrden = 0;
 						for(Componente c : comp) {
 							
@@ -847,7 +847,7 @@ public class NuevoProveedor extends JDialog {
 							String marca = "";
 							String modelo = "";
 							
-						//	costoTotal += c.getPrecioCompra();
+							
 							
 							if(c instanceof Microprocesador) {
 								
@@ -907,10 +907,10 @@ public class NuevoProveedor extends JDialog {
 							
 							float costo = Math.round((c.getPrecioCompra()*100)/100);
 							
-							lista.addElement(tipo+"              "+clase+"                  "+"Costo Unitario ="+costo+"$RD");
+							lista.addElement(tipo+"              "+clase+"          "+"Costo Unitario ="+costo+"$RD");
 							costoOrden += costo;
-							
 							clean();
+							
 													
 						}
 						txtCostoTotal.setText(""+costoOrden);
@@ -918,12 +918,6 @@ public class NuevoProveedor extends JDialog {
 						
 					}
 				});
-				
-				
-				
-				
-				
-				
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -932,7 +926,6 @@ public class NuevoProveedor extends JDialog {
 				JButton cancelButton = new JButton("Cancelar");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						
 						dispose();
 					}
 				});
@@ -940,12 +933,18 @@ public class NuevoProveedor extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+		
+		
+		for(Proveedor p : pro) {
+			
+			proveedores.addElement(p.getNombre()+"      "+p.getRnc()+"         "+"Cuenta con "+p.getOrdenes().size()+" Ordenes de Compra");
+			
+			}
+		
 	}
 
 	protected void clean() {
-		// TODO Auto-generated method stub
-		txtNombre.setText("");
-		txtRNC.setText("");
+		
 		txtCostoTotal.setText("");
 		txtMBcosto.setText("");
 		txtMBmarca.setText("");
@@ -963,9 +962,6 @@ public class NuevoProveedor extends JDialog {
 		txtDDmodelo.setText("");
 		txtDDalmacenamiento.setText("");
 		txtDDcosto.setText("");
-		
-		
-		
 		
 	}
 }

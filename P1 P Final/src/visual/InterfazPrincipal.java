@@ -125,7 +125,6 @@ public class InterfazPrincipal extends JFrame {
 				}
 			}
 		});
-		mnNewMenu_3.add(mntmNewMenuItem_3);
 		
 		JMenu mnNewMenu_4 = new JMenu("Ordenes de Compra");
 		mnNewMenu_3.add(mnNewMenu_4);
@@ -133,8 +132,21 @@ public class InterfazPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Historial de Ordenes");
 		mnNewMenu_4.add(mntmNewMenuItem_4);
 		
+		JMenuItem mntmNewMenuItem_11 = new JMenuItem("Nueva Orden");
+		mntmNewMenuItem_11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				NuevaOrden n = new NuevaOrden();
+				n.setVisible(true);
+				n.setLocationRelativeTo(null);
+				
+			}
+		});
+		mnNewMenu_4.add(mntmNewMenuItem_11);
+		
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Realizar Orden de Compra");
 		mnNewMenu_4.add(mntmNewMenuItem_5);
+		mnNewMenu_3.add(mntmNewMenuItem_3);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
