@@ -52,6 +52,9 @@ public class Registro extends JFrame {
 	 * Create the frame.
 	 */
 	public Registro() {
+		
+		
+		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -59,6 +62,7 @@ public class Registro extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
@@ -135,6 +139,7 @@ public class Registro extends JFrame {
 		
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				if(rdbtnAdministrador.getIcon() != null) {
 					Administrador nuevo = new Administrador(textNombre.getText(), textCedula.getText(), 0, 0, null, textUsuario.getText(), passwordField.getText());
 					Control.getInstance().regUser(nuevo);
@@ -159,6 +164,7 @@ public class Registro extends JFrame {
 		});
 		btnCancelar.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnCancelar.setBounds(226, 213, 89, 23);
-		panel.add(btnCancelar);
+		panel.add(btnCancelar);		
+		
 	}
 }
