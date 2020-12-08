@@ -23,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JPasswordField;
+import java.awt.Color;
 
 public class Login extends JFrame {
 
@@ -120,11 +121,11 @@ public class Login extends JFrame {
 		textUsuario2.setColumns(10);
 		textUsuario2.setVisible(false);
 		
-		JLabel lblContraseña = new JLabel("Contrase\u00F1a\r\n");
-		lblContraseña.setFont(new Font("Arial", Font.PLAIN, 12));
-		lblContraseña.setBounds(44, 67, 86, 14);
-		panel.add(lblContraseña);
-		lblContraseña.setVisible(false);
+		JLabel lblContrasena = new JLabel("Contrase\u00F1a\r\n");
+		lblContrasena.setFont(new Font("Arial", Font.PLAIN, 12));
+		lblContrasena.setBounds(44, 67, 86, 14);
+		panel.add(lblContrasena);
+		lblContrasena.setVisible(false);
 		
 		JButton btnFinalizar = new JButton("Iniciar");
 		btnFinalizar.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -136,6 +137,13 @@ public class Login extends JFrame {
 		passwordField.setFont(new Font("Arial", Font.PLAIN, 12));
 		passwordField.setBounds(44, 92, 248, 20);
 		panel.add(passwordField);
+		
+		JLabel lblWarning = new JLabel("Usuario o contrase\u00F1a incorrecta. Por favor, intente de nuevo.");
+		lblWarning.setForeground(Color.RED);
+		lblWarning.setFont(new Font("Arial", Font.PLAIN, 12));
+		lblWarning.setBounds(44, 145, 370, 14);
+		panel.add(lblWarning);
+		lblWarning.setVisible(false);
 		passwordField.setVisible(false);
 		
 		btnRegistro.addActionListener(new ActionListener() {
@@ -152,7 +160,7 @@ public class Login extends JFrame {
 				btnRegistro.setVisible(false); 
 				lblUsuario2.setVisible(true);
 				textUsuario2.setVisible(true);
-				lblContraseña.setVisible(true);
+				lblContrasena.setVisible(true);
 				passwordField.setVisible(true);
 				btnFinalizar.setVisible(true);
 				btnFinalizar.addActionListener(new ActionListener() {
@@ -161,6 +169,8 @@ public class Login extends JFrame {
 							InterfazPrincipal = new InterfazPrincipal();
 							dispose();
 							InterfazPrincipal.setVisible(true);
+						} else {
+							lblWarning.setVisible(true);
 						}
 					}
 				});
